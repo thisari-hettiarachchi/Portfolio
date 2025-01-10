@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    transition: all 0.2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body{
+    background: white;
+    font-family: "poppins", sans-serif;
+}
+
+*::selection{
+    background: #2b3dda;
+    color: #fff;
+}
+
+::-webkit-scrollbar{
+    width: 0.8rem;
+}
+
+::-webkit-scrollbar-track{
+    background: rgb(235, 202, 245);
+}
+
+::-webkit-scrollbar-thumb{
+    background: #420177;
+}
+
+
+.topnav{
+    position: fixed;
+    margin: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.7rem 10%;
+    height: 6.5rem;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
+    
+}
