@@ -68,7 +68,7 @@ $(document).ready(function () {
 
 // <!-- typed js effect starts -->
 var typed = new Typed(".typing-text", {
-    strings: ["Full Stack Developer"],
+    strings: ["Full Stack Developer", "UI/UX Designer"],
     loop: true,
     typeSpeed: 50,
     backSpeed: 25,
@@ -178,98 +178,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
- // HTML progress circular bar
- let htmlProgress = document.querySelector(".html"),
- htmlValue = document.querySelector(".html-progress");
-let htmlStartValue = 0, htmlEndValue = 90, htmlSpeed = 30;
-
-let progressHtml = setInterval(() => {
-htmlStartValue++;
-htmlValue.textContent = `${htmlStartValue}%`;
-htmlProgress.style.background = `conic-gradient(#fca61f ${htmlStartValue * 3.6}deg, #ededed 0deg)`;
-if (htmlStartValue === htmlEndValue) clearInterval(progressHtml);
-}, htmlSpeed);
-
-// CSS progress circular bar
-let cssProgress = document.querySelector(".css"),
- cssValue = document.querySelector(".css-progress");
-let cssStartValue = 0, cssEndValue = 90, cssSpeed = 30;
-
-let progressCss = setInterval(() => {
-cssStartValue++;
-cssValue.textContent = `${cssStartValue}%`;
-cssProgress.style.background = `conic-gradient(#fca61f ${cssStartValue * 3.6}deg, #ededed 0deg)`;
-if (cssStartValue === cssEndValue) clearInterval(progressCss);
-}, cssSpeed);
-
-// JavaScript progress circular bar
-let javascriptProgress = document.querySelector(".javascript"),
- javascriptValue = document.querySelector(".javascript-progress");
-let javascriptStartValue = 0, javascriptEndValue = 40, jsSpeed = 30;
-
-let progressJs = setInterval(() => {
-javascriptStartValue++;
-javascriptValue.textContent = `${javascriptStartValue}%`;
-javascriptProgress.style.background = `conic-gradient(#7d2ae8 ${javascriptStartValue * 3.6}deg, #ededed 0deg)`;
-if (javascriptStartValue === javascriptEndValue) clearInterval(progressJs);
-}, jsSpeed);
-
-// PHP progress circular bar
-let phpProgress = document.querySelector(".php"),
- phpValue = document.querySelector(".php-progress");
-let phpStartValue = 0, phpEndValue = 30, phpSpeed = 30;
-
-let progressPhp = setInterval(() => {
-phpStartValue++;
-phpValue.textContent = `${phpStartValue}%`;
-phpProgress.style.background = `conic-gradient(#20c997 ${phpStartValue * 3.6}deg, #ededed 0deg)`;
-if (phpStartValue === phpEndValue) clearInterval(progressPhp);
-}, phpSpeed);
-
-// Python progress circular bar
-let pythonProgress = document.querySelector(".python"),
- pythonValue = document.querySelector(".python-progress");
-let pythonStartValue = 0, pythonEndValue = 50, pythonSpeed = 30;
-
-let progressPython = setInterval(() => {
-pythonStartValue++;
-pythonValue.textContent = `${pythonStartValue}%`;
-pythonProgress.style.background = `conic-gradient(#306998 ${pythonStartValue * 3.6}deg, #ededed 0deg)`;
-if (pythonStartValue === pythonEndValue) clearInterval(progressPython);
-}, pythonSpeed);
-
-// Java progress circular bar
-let javaProgress = document.querySelector(".java"),
- javaValue = document.querySelector(".java-progress");
-let javaStartValue = 0, javaEndValue = 20, javaSpeed = 30;
-
-let progressJava = setInterval(() => {
-javaStartValue++;
-javaValue.textContent = `${javaStartValue}%`;
-javaProgress.style.background = `conic-gradient(#b07219 ${javaStartValue * 3.6}deg, #ededed 0deg)`;
-if (javaStartValue === javaEndValue) clearInterval(progressJava);
-}, javaSpeed);
-
-// C++ progress circular bar
-let cppProgress = document.querySelector(".cpp"),
- cppValue = document.querySelector(".cpp-progress");
-let cppStartValue = 0, cppEndValue = 50, cppSpeed = 30;
-
-let progressCpp = setInterval(() => {
-cppStartValue++;
-cppValue.textContent = `${cppStartValue}%`;
-cppProgress.style.background = `conic-gradient(#00599c ${cppStartValue * 3.6}deg, #ededed 0deg)`;
-if (cppStartValue === cppEndValue) clearInterval(progressCpp);
-}, cppSpeed);
-
-// MySQL progress circular bar
-let mysqlProgress = document.querySelector(".mysql"),
- mysqlValue = document.querySelector(".mysql-progress");
-let mysqlStartValue = 0, mysqlEndValue = 80, mysqlSpeed = 30;
-
-let progressMysql = setInterval(() => {
-mysqlStartValue++;
-mysqlValue.textContent = `${mysqlStartValue}%`;
-mysqlProgress.style.background = `conic-gradient(#00758f ${mysqlStartValue * 3.6}deg, #ededed 0deg)`;
-if (mysqlStartValue === mysqlEndValue) clearInterval(progressMysql);
-}, mysqlSpeed);
+// Function to animate progress bars
+function startProgressBars() {
+    // HTML progress
+    let htmlProgress = document.querySelector(".html"),
+      htmlValue = document.querySelector(".html-progress");
+    let htmlStartValue = 0, htmlEndValue = 90, htmlSpeed = 30;
+  
+    let progressHtml = setInterval(() => {
+      htmlStartValue++;
+      htmlValue.textContent = `${htmlStartValue}%`;
+      htmlProgress.style.background = `conic-gradient(#fca61f ${htmlStartValue * 3.6}deg, #ededed 0deg)`;
+      if (htmlStartValue === htmlEndValue) clearInterval(progressHtml);
+    }, htmlSpeed);
+  
+    // CSS progress
+    let cssProgress = document.querySelector(".css"),
+      cssValue = document.querySelector(".css-progress");
+    let cssStartValue = 0, cssEndValue = 90, cssSpeed = 30;
+  
+    let progressCss = setInterval(() => {
+      cssStartValue++;
+      cssValue.textContent = `${cssStartValue}%`;
+      cssProgress.style.background = `conic-gradient(#fca61f ${cssStartValue * 3.6}deg, #ededed 0deg)`;
+      if (cssStartValue === cssEndValue) clearInterval(progressCss);
+    }, cssSpeed);
+  
+    // JavaScript progress
+    let javascriptProgress = document.querySelector(".javascript"),
+      javascriptValue = document.querySelector(".javascript-progress");
+    let javascriptStartValue = 0, javascriptEndValue = 40, jsSpeed = 30;
+  
+    let progressJs = setInterval(() => {
+      javascriptStartValue++;
+      javascriptValue.textContent = `${javascriptStartValue}%`;
+      javascriptProgress.style.background = `conic-gradient(#7d2ae8 ${javascriptStartValue * 3.6}deg, #ededed 0deg)`;
+      if (javascriptStartValue === javascriptEndValue) clearInterval(progressJs);
+    }, jsSpeed);
+  
+    // PHP progress
+    let phpProgress = document.querySelector(".php"),
+      phpValue = document.querySelector(".php-progress");
+    let phpStartValue = 0, phpEndValue = 30, phpSpeed = 30;
+  
+    let progressPhp = setInterval(() => {
+      phpStartValue++;
+      phpValue.textContent = `${phpStartValue}%`;
+      phpProgress.style.background = `conic-gradient(#20c997 ${phpStartValue * 3.6}deg, #ededed 0deg)`;
+      if (phpStartValue === phpEndValue) clearInterval(progressPhp);
+    }, phpSpeed);
+  
+    // Python progress
+    let pythonProgress = document.querySelector(".python"),
+      pythonValue = document.querySelector(".python-progress");
+    let pythonStartValue = 0, pythonEndValue = 50, pythonSpeed = 30;
+  
+    let progressPython = setInterval(() => {
+      pythonStartValue++;
+      pythonValue.textContent = `${pythonStartValue}%`;
+      pythonProgress.style.background = `conic-gradient(#306998 ${pythonStartValue * 3.6}deg, #ededed 0deg)`;
+      if (pythonStartValue === pythonEndValue) clearInterval(progressPython);
+    }, pythonSpeed);
+  
+    // Java progress
+    let javaProgress = document.querySelector(".java"),
+      javaValue = document.querySelector(".java-progress");
+    let javaStartValue = 0, javaEndValue = 50, javaSpeed = 30;
+  
+    let progressJava = setInterval(() => {
+      javaStartValue++;
+      javaValue.textContent = `${javaStartValue}%`;
+      javaProgress.style.background = `conic-gradient(#b07219 ${javaStartValue * 3.6}deg, #ededed 0deg)`;
+      if (javaStartValue === javaEndValue) clearInterval(progressJava);
+    }, javaSpeed);
+  
+    // C++ progress
+    let cppProgress = document.querySelector(".cpp"),
+      cppValue = document.querySelector(".cpp-progress");
+    let cppStartValue = 0, cppEndValue = 50, cppSpeed = 30;
+  
+    let progressCpp = setInterval(() => {
+      cppStartValue++;
+      cppValue.textContent = `${cppStartValue}%`;
+      cppProgress.style.background = `conic-gradient(#00599c ${cppStartValue * 3.6}deg, #ededed 0deg)`;
+      if (cppStartValue === cppEndValue) clearInterval(progressCpp);
+    }, cppSpeed);
+  
+    // MySQL progress
+    let mysqlProgress = document.querySelector(".mysql"),
+      mysqlValue = document.querySelector(".mysql-progress");
+    let mysqlStartValue = 0, mysqlEndValue = 80, mysqlSpeed = 30;
+  
+    let progressMysql = setInterval(() => {
+      mysqlStartValue++;
+      mysqlValue.textContent = `${mysqlStartValue}%`;
+      mysqlProgress.style.background = `conic-gradient(#00758f ${mysqlStartValue * 3.6}deg, #ededed 0deg)`;
+      if (mysqlStartValue === mysqlEndValue) clearInterval(progressMysql);
+    }, mysqlSpeed);
+  }
+  
+  // Intersection Observer to detect when the skills section is visible
+  let skillsSection = document.querySelector(".skills");
+  
+  let observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startProgressBars(); // Start animating progress bars
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the section is visible
+  );
+  
+  // Observe the skills section
+  observer.observe(skillsSection);
+  
