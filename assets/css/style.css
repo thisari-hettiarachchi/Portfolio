@@ -442,8 +442,13 @@ html::-webkit-scrollbar-thumb {
   padding: 12% 10% 10% 15%;
   background-color: #fff;
   text-align: center;
-  border-radius: 10%;
+  border-radius: 50%;
   border-color: black;
+}
+
+.progress-card span{
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .progress-card:hover{
@@ -472,7 +477,7 @@ html::-webkit-scrollbar-thumb {
 
 .progress-value{
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
