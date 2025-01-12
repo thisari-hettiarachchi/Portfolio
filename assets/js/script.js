@@ -129,6 +129,12 @@ srtop.reveal('.skills .bar-sub-heading', {origin: 'right', delay: 200 });
 srtop.reveal('.contact .heading', { delay: 200 });
 srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
+
+/*  SCROLL FOOTER */
+srtop.reveal('.footer .box ', { delay: 200 });
+srtop.reveal('.footer .box .share a', { origin: 'right', delay: 400 });
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
 });
