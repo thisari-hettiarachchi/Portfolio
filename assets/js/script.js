@@ -6,6 +6,8 @@ function closeNav() {
     document.getElementById("mySidenav").classList.remove("open");
 }
 
+
+
 $(document).ready(function () {
 
     $('#menu').click(function () {
@@ -45,23 +47,6 @@ $(document).ready(function () {
         }, 500, 'linear')
     });
 
-    // <!-- emailjs to mail contact form data -->
-    $("#contact-form").submit(function (event) {
-        emailjs.init("user_TTDmetQLYgWCLzHTDgqxm");
-
-        emailjs.sendForm('contact_service', 'template_contact', '#contact-form')
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                document.getElementById("contact-form").reset();
-                alert("Form Submitted Successfully");
-            }, function (error) {
-                console.log('FAILED...', error);
-                alert("Form Submission Failed! Try Again");
-            });
-        event.preventDefault();
-    });
-    // <!-- emailjs to mail contact form data -->
-
 });
 
 
@@ -98,36 +83,6 @@ function showSkills(skills) {
 
 
 
-// pre loader start
-// function loader() {
-//     document.querySelector('.loader-container').classList.add('fade-out');
-// }
-// function fadeOut() {
-//     setInterval(loader, 500);
-// }
-// window.onload = fadeOut;
-// pre loader end
-
-// disable developer mode
-document.onkeydown = function (e) {
-    if (e.keyCode == 123) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-}
-
-
 /* ===== SCROLL REVEAL ANIMATION ===== */
 const srtop = ScrollReveal({
     origin: 'top',
@@ -136,21 +91,26 @@ const srtop = ScrollReveal({
     reset: true
 });
 
-/* SCROLL HOME */
-srtop.reveal('.home .content h3', { delay: 200 });
-srtop.reveal('.home .content p', { delay: 200 });
-srtop.reveal('.home .content .btn', { delay: 200 });
+/* SCROLL HOME */// Content animations coming from the left
+srtop.reveal('.home .content h2', { origin: 'left', delay: 400 });
+srtop.reveal('.home .content p', { origin: 'left', delay: 300 });
+srtop.reveal('.home .content .btn', { origin: 'left', delay: 400 });
 
-srtop.reveal('.home .image', { delay: 400 });
-srtop.reveal('.home .linkedin', { interval: 600 });
-srtop.reveal('.home .github', { interval: 800 });
-srtop.reveal('.home .twitter', { interval: 1000 });
-srtop.reveal('.home .telegram', { interval: 600 });
-srtop.reveal('.home .instagram', { interval: 600 });
-srtop.reveal('.home .dev', { interval: 600 });
+// Image animation coming from the right
+srtop.reveal('.home .image', { origin: 'right', delay: 1000, duration: 2000 }); 
+
+// Social media links animations coming from the bottom for uniformity
+srtop.reveal('.home .linkedin', { origin: 'bottom', interval: 200 });
+srtop.reveal('.home .github', { origin: 'bottom', interval: 300 });
+srtop.reveal('.home .twitter', { origin: 'bottom', interval: 400 });
+srtop.reveal('.home .instagram', { origin: 'bottom', interval: 500 });
+srtop.reveal('.home .facebook', { origin: 'bottom', interval: 600 });
+
 
 /* SCROLL ABOUT */
-srtop.reveal('.about .content h3', { delay: 200 });
+srtop.reveal('.about .heading', { delay: 200 });
+srtop.reveal('.about-container .image', { origin: 'left', delay: 1000, duration: 2000 }); 
+srtop.reveal('.about .content h2', { delay: 200 });
 srtop.reveal('.about .content .tag', { delay: 200 });
 srtop.reveal('.about .content p', { delay: 200 });
 srtop.reveal('.about .content .box-container', { delay: 200 });
@@ -158,25 +118,18 @@ srtop.reveal('.about .content .resumebtn', { delay: 200 });
 
 
 /* SCROLL SKILLS */
+srtop.reveal('.skills .heading', { delay: 200 });
 srtop.reveal('.skills .container', { interval: 200 });
 srtop.reveal('.skills .container .bar', { delay: 400 });
 
-/* SCROLL EDUCATION */
-srtop.reveal('.education .box', { interval: 200 });
-
-/* SCROLL PROJECTS */
-srtop.reveal('.work .box', { interval: 200 });
-
-/* SCROLL EXPERIENCE */
-srtop.reveal('.experience .timeline', { delay: 400 });
-srtop.reveal('.experience .timeline .container', { interval: 400 });
-
 /* SCROLL CONTACT */
+srtop.reveal('.contact .heading', { delay: 200 });
 srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
 document.addEventListener("DOMContentLoaded", () => {
 
 });
+
 
 // Function to animate progress bars
 function startProgressBars() {

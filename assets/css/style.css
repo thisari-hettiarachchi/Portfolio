@@ -26,10 +26,6 @@ body {
   color: #fff;
 }
 
-html {
-  font-size: 62.5%;
-  overflow-x: hidden;
-}
 html::-webkit-scrollbar {
   width: 0.8rem;
 }
@@ -310,9 +306,7 @@ html::-webkit-scrollbar-thumb {
   max-width: 1050px;
   width: 100%;
   background: #fff;
-  border-radius: 1.5rem;
   margin: 2rem auto 8rem auto;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -329,14 +323,9 @@ html::-webkit-scrollbar-thumb {
   width: 30rem;
   height: auto;
   border-radius: 5%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
-  mix-blend-mode: luminosity;
+  box-shadow: 0 5px 10px #2EB2D3;
   transition: 0.3s;
   cursor: pointer;
-}
-
-.about .about-container .image img:hover {
-  mix-blend-mode: normal;
 }
 
 .about .about-container .content {
@@ -358,7 +347,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .about .about-container .content p {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin-top: 1.5rem;
   font-family: "Nunito";
   font-weight: 600;
@@ -368,7 +357,6 @@ html::-webkit-scrollbar-thumb {
 .about .about-container .content .box-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
   font-family: "Nunito";
   font-weight: 600;
 }
@@ -382,7 +370,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .resumebtn {
-  margin-top: 6rem;
+  margin-top: 1rem;
 }
 
 .resumebtn .btn {
