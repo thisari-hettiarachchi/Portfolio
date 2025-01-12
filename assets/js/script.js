@@ -91,6 +91,8 @@ const srtop = ScrollReveal({
     reset: true
 });
 
+
+
 /* SCROLL HOME */// Content animations coming from the left
 srtop.reveal('.home .content h2', { origin: 'left', delay: 400 });
 srtop.reveal('.home .content p', { origin: 'left', delay: 300 });
@@ -122,6 +124,7 @@ srtop.reveal('.skills .heading', { delay: 200 });
 srtop.reveal('.skills .container', { interval: 200 });
 srtop.reveal('.skills .container .bar', { delay: 400 });
 
+
 /* SCROLL CONTACT */
 srtop.reveal('.contact .heading', { delay: 200 });
 srtop.reveal('.contact .container', { delay: 400 });
@@ -141,7 +144,7 @@ function startProgressBars() {
     let progressHtml = setInterval(() => {
       htmlStartValue++;
       htmlValue.textContent = `${htmlStartValue}%`;
-      htmlProgress.style.background = `conic-gradient(#fca61f ${htmlStartValue * 3.6}deg, #ededed 0deg)`;
+      htmlProgress.style.background = `conic-gradient(#2EB2D3 ${htmlStartValue * 3.6}deg, #ededed 0deg)`;
       if (htmlStartValue === htmlEndValue) clearInterval(progressHtml);
     }, htmlSpeed);
   
@@ -153,7 +156,7 @@ function startProgressBars() {
     let progressCss = setInterval(() => {
       cssStartValue++;
       cssValue.textContent = `${cssStartValue}%`;
-      cssProgress.style.background = `conic-gradient(#fca61f ${cssStartValue * 3.6}deg, #ededed 0deg)`;
+      cssProgress.style.background = `conic-gradient(#2EB2D3 ${cssStartValue * 3.6}deg, #ededed 0deg)`;
       if (cssStartValue === cssEndValue) clearInterval(progressCss);
     }, cssSpeed);
   
@@ -165,7 +168,7 @@ function startProgressBars() {
     let progressJs = setInterval(() => {
       javascriptStartValue++;
       javascriptValue.textContent = `${javascriptStartValue}%`;
-      javascriptProgress.style.background = `conic-gradient(#7d2ae8 ${javascriptStartValue * 3.6}deg, #ededed 0deg)`;
+      javascriptProgress.style.background = `conic-gradient(#2EB2D3 ${javascriptStartValue * 3.6}deg, #ededed 0deg)`;
       if (javascriptStartValue === javascriptEndValue) clearInterval(progressJs);
     }, jsSpeed);
   
@@ -177,7 +180,7 @@ function startProgressBars() {
     let progressPhp = setInterval(() => {
       phpStartValue++;
       phpValue.textContent = `${phpStartValue}%`;
-      phpProgress.style.background = `conic-gradient(#20c997 ${phpStartValue * 3.6}deg, #ededed 0deg)`;
+      phpProgress.style.background = `conic-gradient(#2EB2D3 ${phpStartValue * 3.6}deg, #ededed 0deg)`;
       if (phpStartValue === phpEndValue) clearInterval(progressPhp);
     }, phpSpeed);
   
@@ -189,7 +192,7 @@ function startProgressBars() {
     let progressPython = setInterval(() => {
       pythonStartValue++;
       pythonValue.textContent = `${pythonStartValue}%`;
-      pythonProgress.style.background = `conic-gradient(#306998 ${pythonStartValue * 3.6}deg, #ededed 0deg)`;
+      pythonProgress.style.background = `conic-gradient(#2EB2D3 ${pythonStartValue * 3.6}deg, #ededed 0deg)`;
       if (pythonStartValue === pythonEndValue) clearInterval(progressPython);
     }, pythonSpeed);
   
@@ -201,7 +204,7 @@ function startProgressBars() {
     let progressJava = setInterval(() => {
       javaStartValue++;
       javaValue.textContent = `${javaStartValue}%`;
-      javaProgress.style.background = `conic-gradient(#b07219 ${javaStartValue * 3.6}deg, #ededed 0deg)`;
+      javaProgress.style.background = `conic-gradient(#2EB2D3 ${javaStartValue * 3.6}deg, #ededed 0deg)`;
       if (javaStartValue === javaEndValue) clearInterval(progressJava);
     }, javaSpeed);
   
@@ -213,7 +216,7 @@ function startProgressBars() {
     let progressCpp = setInterval(() => {
       cppStartValue++;
       cppValue.textContent = `${cppStartValue}%`;
-      cppProgress.style.background = `conic-gradient(#00599c ${cppStartValue * 3.6}deg, #ededed 0deg)`;
+      cppProgress.style.background = `conic-gradient(#2EB2D3 ${cppStartValue * 3.6}deg, #ededed 0deg)`;
       if (cppStartValue === cppEndValue) clearInterval(progressCpp);
     }, cppSpeed);
   
@@ -225,7 +228,7 @@ function startProgressBars() {
     let progressMysql = setInterval(() => {
       mysqlStartValue++;
       mysqlValue.textContent = `${mysqlStartValue}%`;
-      mysqlProgress.style.background = `conic-gradient(#00758f ${mysqlStartValue * 3.6}deg, #ededed 0deg)`;
+      mysqlProgress.style.background = `conic-gradient(#2EB2D3 ${mysqlStartValue * 3.6}deg, #ededed 0deg)`;
       if (mysqlStartValue === mysqlEndValue) clearInterval(progressMysql);
     }, mysqlSpeed);
   }

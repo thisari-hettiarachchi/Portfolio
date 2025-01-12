@@ -30,10 +30,10 @@ html::-webkit-scrollbar {
   width: 0.8rem;
 }
 html::-webkit-scrollbar-track {
-  background:  #7bcee294;
+  background:  #80ccdf94;
 }
 html::-webkit-scrollbar-thumb {
-  background:  #2EB2D3;
+  background:  #397a8a;
 }
 
 .topnav{
@@ -453,10 +453,9 @@ html::-webkit-scrollbar-thumb {
 
 .circular-progress{
   position: relative;
-  height: 130px;
-  width: 130px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
-  background: conic-gradient(#7d2ae8 3.6deg, #ededed 0deg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -465,15 +464,15 @@ html::-webkit-scrollbar-thumb {
 .circular-progress::before{
   content: "";
   position: absolute;
-  height: 120px;
-  width: 120px;
+  height: 90px;
+  width: 90px;
   border-radius: 50%;
   background-color: #fff;
 }
 
 .progress-value{
   position: relative;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
@@ -497,40 +496,42 @@ html::-webkit-scrollbar-thumb {
   width: 100%;
   background: #fff;
   border-radius: 1.5rem;
-  margin: 2rem 5rem;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 2rem auto;
 }
+
 .contact .container .content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2.5rem 2rem;
 }
-.contact .content .image-box {
-  max-width: 60%;
-  margin-left: 4rem;
-}
-.contact .content .image-box img {
-  width: 100%;
-  height: 40rem;
-  position: relative;
-}
+
 .contact .content form {
   width: 45%;
-  margin-right: 3.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
 }
+
 form .form-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
+.field-row {
+  display: flex;
+  gap: 1rem;
+}
+
 .form-group .field {
   height: 50px;
   display: flex;
   position: relative;
-  margin: 1rem;
+  margin: 1rem 0;
   width: 100%;
 }
+
 form i {
   position: absolute;
   top: 50%;
@@ -540,6 +541,7 @@ form i {
   pointer-events: none;
   transform: translateY(-50%);
 }
+
 form .field input,
 form .message textarea {
   width: 100%;
@@ -552,76 +554,67 @@ form .message textarea {
   border: 1px solid rgb(51, 51, 51);
   background: #e5ecfb;
 }
+
 .field input::placeholder,
 .message textarea::placeholder {
   color: rgb(51, 51, 51);
 }
+
 .field input:focus,
 .message textarea:focus {
   padding-left: 47px;
   border: 2px solid  #2EB2D3;
 }
+
 .field input:focus ~ i,
 .message textarea:focus ~ i {
   color:  #2EB2D3;
 }
+
 form .message {
   position: relative;
-  margin: 1rem;
+  margin: 1rem 0;
   width: 100%;
 }
+
 form .message i {
   top: 25px;
   font-size: 20px;
   left: 15px;
 }
+
 form .message textarea {
   min-height: 130px;
   max-height: 230px;
-  max-width: 100%;
-  min-width: 100%;
+  width: 100%;
   padding: 12px 20px 0 48px;
 }
+
 form .message textarea::-webkit-scrollbar {
   width: 0px;
 }
+
 form .button-area {
   display: flex;
-  float: right;
-  flex-direction: row-reverse;
+  justify-content: center;
+  width: 100%;
 }
+
 .button-area button {
   color: #fff;
   border: none;
   outline: none;
   font-size: 1.8rem;
   cursor: pointer;
-  border-radius: 5px;
-  padding: 13px 25px;
+  border-radius: 25px;
+  padding: 13px 180px;
   background:  #2EB2D3;
   box-shadow: 0px 5px 10px  #409eb6;
   transition: 0.3s ease;
-  font-family: "Nunito", sans-serif;
 }
+
 .button-area button:hover {
-  background:  #328499;
   color: black;
-}
-.button-area span {
-  font-size: 17px;
-  padding: 1rem;
-  display: none;
-}
-.button-area button i {
-  position: relative;
-  top: 6px;
-  left: 2px;
-  font-size: 1.5rem;
-  transition: 0.3s;
-  color: #fff;
-}
-.button-area button:hover i {
-  left: 8px;
 }
 
 
@@ -629,33 +622,39 @@ form .button-area {
 .footer {
   min-height: auto;
   padding-top: 0;
-  background:  #2EB2D3;
+  background:  #366a86;
 }
+
 .footer .box-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .footer .box-container .box {
   flex: 1 1 25rem;
-  margin: 2.5rem;
+  margin: 5rem;
 }
+
 .footer .box-container .box h3 {
   font-size: 2.5rem;
   color: #fff;
   padding-bottom: 1rem;
   font-weight: normal;
 }
+
 .footer .box-container .box p {
   font-size: 1.5rem;
-  color: #ccc;
+  color: white;
   padding: 0.7rem 0;
   text-transform: none;
 }
+
 .footer .box-container .box p i {
   padding-right: 1rem;
   color: black;
 }
+
 .footer .box-container .box a {
   font-size: 1.5rem;
   color: rgb(238, 238, 238);
@@ -663,14 +662,17 @@ form .button-area {
   display: block;
   text-decoration: none;
 }
+
 .footer .box-container .box a:hover {
   color: black;
 }
+
 .footer .box-container .box .share {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem 0;
 }
+
 .footer .box-container .box .share a {
   height: 4rem;
   width: 4rem;
@@ -684,12 +686,7 @@ form .button-area {
   color: #02094b;
   border: none;
 }
-.footer .box-container .box .share a:hover {
-  background: transparent;
-  transform: scale(0.98);
-  border: 0.1rem solid rgb(180, 178, 178);
-  color:  white;
-}
+
 .footer .credit {
   padding: 1rem 0 0 0;
   text-align: center;
