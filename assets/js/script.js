@@ -121,8 +121,8 @@ srtop.reveal('.about .content .resumebtn', { delay: 200 });
 
 /* SCROLL SKILLS */
 srtop.reveal('.skills .heading', { delay: 200 });
-srtop.reveal('.skills .container', { interval: 200 });
-srtop.reveal('.skills .container .bar', { delay: 400 });
+srtop.reveal('.skills .sub-heading', {origin: 'left', delay: 200 });
+srtop.reveal('.skills .bar-sub-heading', {origin: 'right', delay: 200 });
 
 
 /* SCROLL CONTACT */
@@ -240,13 +240,52 @@ function startProgressBars() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          startProgressBars(); // Start animating progress bars
+          startProgressBars(); 
         }
       });
     },
-    { threshold: 0.5 } // Trigger when 50% of the section is visible
+    { threshold: 0.5 } 
   );
   
   // Observe the skills section
   observer.observe(skillsSection);
   
+  
+function startProfessionalProgressBars() {
+  const skills = [
+    { selector: ".teamwork-progress", endValue: 90 },
+    { selector: ".timemgt-progress", endValue: 80 },
+    { selector: ".communication-progress", endValue: 90 },
+    { selector: ".adaptability-progress", endValue: 75 },
+  ];
+
+  skills.forEach((skill) => {
+    const progressValue = document.querySelector(skill.selector);
+    const progressBar = progressValue.parentElement;
+
+    let startValue = 0;
+    const speed = 30;
+
+    const progress = setInterval(() => {
+      startValue++;
+      progressValue.textContent = `${startValue}%`;
+      progressBar.style.setProperty("--progress-width", `${startValue}%`);
+      progressBar.style.background = `linear-gradient(90deg,#2EB2D3 ${startValue}%, #e0e0e0 ${startValue}%)`;
+      if (startValue === skill.endValue) clearInterval(progress);
+    }, speed);
+  });
+}
+
+const professionalSkillsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        startProfessionalProgressBars();
+      }
+    });
+  },
+  { threshold: 0.5 } 
+);
+
+const professionalSkillsSection = document.querySelector(".progress-bar-section");
+professionalSkillsObserver.observe(professionalSkillsSection);

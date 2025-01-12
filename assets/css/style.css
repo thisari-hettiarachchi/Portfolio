@@ -410,7 +410,6 @@ html::-webkit-scrollbar-thumb {
 
 
 
-
 .skills{
   background-color: white;
   align-items: center; 
@@ -432,10 +431,18 @@ html::-webkit-scrollbar-thumb {
   max-width: 1050px;
   width: 100%;
   background: #fff;
-  border-radius: 1.5rem;
-  margin: 2rem auto 8rem auto;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 2rem auto 2rem auto;
   padding: 2rem; 
+}
+
+.skill-container .row{
+  margin-right: 20px;
+}
+
+.skill-container .sub-heading{
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .progress-card{
@@ -480,6 +487,55 @@ html::-webkit-scrollbar-thumb {
   font-size: 1.5rem;
   font-weight: 600;
 }
+
+.bar-sub-heading{
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-left: 40px;
+}
+
+.progress-bar-section {
+  padding: 20px 0;
+  margin-left: 10rem;
+}
+
+.progress-item {
+  margin-bottom: 20px;
+}
+
+.skill-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 16px;
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  border-radius: 25px;
+  height: 20px; 
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar span {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 1;
+}
+
+.progress-bar-value{
+  margin-left: 10px;
+}
+
 
 
 
