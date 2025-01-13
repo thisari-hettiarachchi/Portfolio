@@ -244,7 +244,6 @@ function startProgressBars() {
     }, mysqlSpeed);
   }
   
-  // Intersection Observer to detect when the skills section is visible
   let skillsSection = document.querySelector(".skills");
   
   let observer = new IntersectionObserver(
