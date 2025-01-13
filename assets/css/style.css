@@ -537,6 +537,102 @@ html::-webkit-scrollbar-thumb {
 }
 
 
+.projects-container {
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+.projects-container .heading {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.project-tab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.project-tab .tab-btn {
+  color: black;
+  padding: 1rem 1.25rem 0.875rem;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.project-tab .tab-btn.active-tab {
+  color: #2EB2D3;
+  font-weight: bold;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.project-item {
+  border: 1px solid #2EB2D3;
+  border-radius: 5px;
+  width: 350px;
+  overflow: hidden;
+  background: transparent;
+  box-sizing: border-box;
+  transition: background-color 0.3s, transform 0.3s;
+  padding: 20px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.project-item:hover {
+  transform: scale(1.1);
+}
+
+.project-item a {
+  text-decoration: none;
+}
+
+.project-item .project-title {
+  text-decoration: none;
+  color: #2EB2D3;
+  font-size: 15px;
+}
+
+.project-item .project-title:hover {
+  color: black;
+}
+
+.project-img img {
+  width: 100%;
+  height: auto;
+}
+
+.project-item-icon-box {
+  background: hsl(0, 0%, 22%);
+  color: #2EB2D3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  opacity: 0;
+  z-index: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.project-item:hover .project-item-icon-box {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+
 
 
 
@@ -748,14 +844,16 @@ form .button-area {
   border: none;
 }
 
-.footer .credit {
-  padding: 1rem 0 0 0;
+.footer-bottom{
   text-align: center;
-  font-size: 1.5rem;
-  font-family: "Nunito", sans-serif;
-  font-weight: 600;
-  color: #fff;
-  border-top: 0.1rem solid #fff3;
+  border-top: 1px solid #444444;
+  padding-top: 10px;
+}
+
+.copyright{
+  margin: 0;
+  color: #bdbcbc;
+  font-size: 15px;
 }
 
 @-webkit-keyframes pound {
@@ -768,6 +866,8 @@ form .button-area {
     transform: scale(1.1);
   }
 }
+
+
 
 
 #scroll-top {

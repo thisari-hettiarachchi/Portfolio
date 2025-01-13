@@ -65,7 +65,7 @@ var typed = new Typed(".typing-text", {
 
 function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
-    if (!skillsContainer) return; // Ensure skillsContainer exists
+    if (!skillsContainer) return; 
 
     let skillHTML = "";
     skills.forEach(skill => {
@@ -129,6 +129,11 @@ srtop.reveal('.skills .bar-sub-heading', {origin: 'right', delay: 200 });
 srtop.reveal('.contact .heading', { delay: 200 });
 srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
+
+/* SCROLL PROJECT */
+srtop.reveal('.projects-container .heading ', { delay: 200 });
+srtop.reveal('.project-tab .tab-btn', { origin: 'right', delay: 400 });
+srtop.reveal('.project-item', { origin: 'left', delay: 400 });
 
 /*  SCROLL FOOTER */
 srtop.reveal('.footer .box ', { delay: 200 });
@@ -253,7 +258,6 @@ function startProgressBars() {
     { threshold: 0.5 } 
   );
   
-  // Observe the skills section
   observer.observe(skillsSection);
   
   
@@ -295,3 +299,36 @@ const professionalSkillsObserver = new IntersectionObserver(
 
 const professionalSkillsSection = document.querySelector(".progress-bar-section");
 professionalSkillsObserver.observe(professionalSkillsSection);
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const projectItems = document.querySelectorAll(".project-item");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      tabButtons.forEach((btn) => btn.classList.remove("active-tab"));
+
+      button.classList.add("active-tab");
+
+      const targetCategory = button.dataset.target;
+
+      projectItems.forEach((item) => {
+        if (targetCategory === "#all" || item.dataset.filterItemCategory === targetCategory.substring(1)) {
+          item.style.display = "flex"; 
+        } else {
+          item.style.display = "none"; 
+        }
+      });
+    });
+  });
+
+  tabButtons[0].click();
+});
+
+
+
+
+
