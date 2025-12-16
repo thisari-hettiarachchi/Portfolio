@@ -73,7 +73,7 @@ const Navbar = () => {
                 Contact
               </a>
             </li>
-            <li className="theme-toggle">
+            {/*<li className="theme-toggle">
               <button 
                 className="theme-btn" 
                 onClick={toggleTheme}
@@ -81,7 +81,7 @@ const Navbar = () => {
               >
                 <i className={`bx ${isDark ? 'bx-sun' : 'bx-moon'}`}></i>
               </button>
-            </li>
+            </li>*/}
           </ul>
         </div>
       </nav>

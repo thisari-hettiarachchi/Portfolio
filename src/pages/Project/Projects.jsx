@@ -13,9 +13,6 @@ import {
   AureaNewImg,
   SpaceFinderImg,
   SeatifyImg, 
-  BurgerFlyer,
-  CheeseCakeFlyer,
-  PizzaFlyer,
   TurboTechWeb,
   TurboTechUI
 } from "../../assets/index.js";
@@ -218,25 +215,10 @@ const projectData = [
       },
     ],
   },
-  {
-    title: "Burger Flyer ",
-    category: "Graphic Design",
-    image: BurgerFlyer,
-  },
-  {
-    title: "Cheese Cake Flyer",
-    category: "Graphic Design",
-    image: CheeseCakeFlyer,
-  },
-  {
-    title: "Pizza Flyer",
-    category: "Graphic Design",
-    image: PizzaFlyer,
-  },
 ];
 
 
-const categories = ["Web Apps", "UI Design", "Graphic Design", "Desktop Application"];
+const categories = ["Web Apps", "UI Design","Desktop Application"];
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
