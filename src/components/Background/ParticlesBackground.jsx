@@ -66,6 +66,7 @@ const ParticleBackground = () => {
             enable: true,
             area: 800,
           },
+          limit:80,
         },
         color: {
           value: particleColor,
