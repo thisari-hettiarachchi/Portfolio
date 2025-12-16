@@ -7,7 +7,7 @@
 }
 
 .about .heading {
-  font-size: 25px;
+  font-size: 40px;
   text-align: center;
   margin-bottom: 1rem;
   font-weight: bold; 
@@ -30,7 +30,6 @@
   transition: all 0.8s ease;
 }
 
-/* Fade in animation for about container */
 .about .about-container.fade-in-up {
   opacity: 1;
   transform: translateY(0);
@@ -43,7 +42,7 @@
 
 .about .about-container .image img {
   margin: 4rem;
-  width: 30rem;
+  width: 35rem;
   height: auto;
   border-radius: 5%;
   box-shadow: var(--img-shadow);
@@ -58,12 +57,12 @@
 
 .about .about-container .content h2 {
   color: var(--text-primary);
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 6px;
 }
 
 .about .about-container .content p {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin-top: 1.5rem;
   font-family: "Nunito";
   font-weight: 600;
@@ -136,7 +135,7 @@
 
 .subheading {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   font-weight: bold;
   margin: 4rem 0 3rem 0;
   color: var(--heading);
@@ -145,7 +144,7 @@
 
 .timeline-container {
   position: relative;
-  max-width: 1200px;
+  max-width: 1500px;
   width: 100%;
   margin: 0 auto;
   padding: 40px 20px 80px 20px;
@@ -310,7 +309,7 @@
 }
 
 .education-degree {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--heading);
   margin-bottom: 8px;
   font-weight: bold;
@@ -329,7 +328,7 @@
 }
 
 .education-institution {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: var(--primary);
   margin-bottom: 0;
   font-weight: 600;
@@ -340,7 +339,7 @@
   color: black;
   padding: 8px 16px;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -364,20 +363,20 @@
   align-items: center;
   gap: 8px;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
 .meta-item i {
   color: #2EB2D3;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
 }
 
 .education-description {
   color: var(--text-primary);
   line-height: 1.7;
   margin-bottom: 25px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   opacity: 0.9;
 }
 
