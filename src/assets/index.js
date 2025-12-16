@@ -10,9 +10,6 @@ import AureaNewImg from "./AureaNew.png";
 import SpaceFinderImg from "./SpaceFinder.png";
 import SeatifyImg from "./Seatify.jpg";
 import AutoMartLogo from "./auto mart.png";
-import BurgerFlyer from "./burger.png";
-import CheeseCakeFlyer from "./cheese cake.png";
-import PizzaFlyer from "./pizza.png";
 import TurboTechWeb from "./TurboTech-Web.png";
 import TurboTechUI from "./TurboTech.png";
 
@@ -30,9 +27,6 @@ export {
     SpaceFinderImg,
     SeatifyImg,
     AutoMartLogo, 
-    BurgerFlyer,
-    CheeseCakeFlyer,
-    PizzaFlyer,
     TurboTechWeb,
     TurboTechUI
 };
