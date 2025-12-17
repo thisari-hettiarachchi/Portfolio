@@ -27,7 +27,7 @@ const Feedback = () => {
       </div>
       <a href="./FeedbackForm/#feedback-form" className="feedback-btn">
           <span>Add Review</span>
-          <i className="bx bxs-down-arrow-circle"></i>
+          <i class="bx bxs-plus-circle bx-tada "/>
         </a>
     </section>
   );
