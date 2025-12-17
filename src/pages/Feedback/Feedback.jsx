@@ -5,7 +5,7 @@ import "./Feedback.css"; // Your CSS file
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [form, setForm] = useState({ name: "", title: "", feedback: "" });
+  const [form, setForm] = useState({ name: "", role: "", message: "" });
 
   // Fetch feedbacks from backend
   useEffect(() => {
@@ -26,7 +26,7 @@ const Feedback = () => {
     try {
       await axios.post("http://localhost:5000/feedbacks", form);
       alert("Feedback added!");
-      setForm({ name: "", title: "", feedback: "" });
+      setForm({ name: "", role: "", message: "" });
       setIsPopupOpen(false);
 
       // Refresh feedback list
@@ -39,33 +39,36 @@ const Feedback = () => {
 
   return (
     <section className="feedback-section">
-      <h2 className="heading">What People Say About Me?</h2>
+      <h2 className="heading">
+       <i className="bx bxs-comment"></i> Testimonial
+      </h2>
+
 
       <div className="feedback-container">
         {feedbacks.map((fb, index) => (
           <div key={index} className="feedback-card">
             <img src={fb.image} alt={fb.name} className="feedback-img" />
             <h3>{fb.name}</h3>
-            <p className="title">{fb.role}</p>
+            <p className="role">{fb.role}</p>
             <p className="feedback-text">"{fb.message}"</p>
-            <p className="feedback-date">"{new Date(fb.createdAt).toLocaleDateString()}"</p>
+            <p className="feedback-date">{fb.createdAt ? new Date(fb.createdAt).toLocaleDateString() : ""}</p>
           </div>
         ))}
       </div>
 
       {/* Add Review Button */}
       <button
-  className="feedback-btn"
-  type="button"
-  onClick={() => setIsPopupOpen(true)}
->
-  <span>Add Review</span>
-  <i className="bx bxs-plus-circle bx-tada" />
-</button>
+        className="feedback-btn"
+        type="button"
+        onClick={() => setIsPopupOpen(true)}
+        >
+        <span>Add Review</span>
+        <i className="bx bxs-plus-circle bx-tada" />
+      </button>
 
       {/* Popup */}
       {isPopupOpen && (
-        <div className="feedback-popup-overlay">
+        <div className="feedback-popup-overlay active">
           <div className="feedback-popup">
             <button
               className="close-btn"
@@ -82,16 +85,16 @@ const Feedback = () => {
                 required
               />
               <input
-                name="title"
-                placeholder="Your Title"
-                value={form.title}
+                name="role"
+                placeholder="Your Role"
+                value={form.role}
                 onChange={handleChange}
                 required
               />
               <textarea
-                name="feedback"
+                name="message"
                 placeholder="Your Feedback"
-                value={form.feedback}
+                value={form.message}
                 onChange={handleChange}
                 required
               />
