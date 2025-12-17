@@ -18,7 +18,6 @@ const feedbackSchema = new mongoose.Schema({
   name: String,
   role: String,
   message: String,
-  image: { type: String, default: "https://i.pravatar.cc/150?img=12" },
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -45,7 +44,6 @@ app.post("/feedbacks", async (req, res) => {
     name: name || "Anonymous",
     role: role !== undefined ? role : req.body.title || "",
     message: message !== undefined ? message : req.body.feedback || "",
-    image: image || "https://i.pravatar.cc/150?img=12"
   });
 
   try {
