@@ -12,6 +12,7 @@ import "boxicons/css/boxicons.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Helmet } from "react-helmet";
+import Feedbacks from "./pages/Feedback/Feedback";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -81,6 +82,7 @@ const App = () => {
           <Skills />
           <Project />
           <Service />
+          <Feedbacks />
           <Contact />
           <Footer />
 

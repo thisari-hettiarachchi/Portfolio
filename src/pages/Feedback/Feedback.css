@@ -1,0 +1,90 @@
+.feedback-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.feedback-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feedback-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feedback-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.feedback-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-weight: 500;
+    color: #555;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.feedback-text {
+    font-style: italic;
+    color: #333;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+
+
+.feedback-btn {
+  margin-top: 2rem;
+  display: inline-block; 
+  line-height: 1; 
+  padding: 1.6rem 3rem;
+  border-radius: 4em;
+  transition: 0.5s;
+  color: var(--text-primary);
+  background: #2EB2D3;
+  box-shadow: 0px 5px 10px  #409eb6; 
+  font-family: "Nunito", sans-serif;
+  text-decoration: none; 
+}
+
+.feedback-btn span {
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+}
+
+.feedback-btn i {
+  margin-left: 0.3rem;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.feedback-btn:hover {
+  background: #2EB2D3;
+  color: black;
+}
+
+.feedback-btn:hover i {
+  transform: translateX(5px);
+}
