@@ -13,6 +13,16 @@ const About = () => {
   const journey = [
     {
       id: 1,
+      degree: "Digital Graphic Designing Course",
+      institution: "Informatics Institute of Technology (IIT)",
+      location: "Colombo 04",
+      period: "Present",
+      description:
+        "Pursuing Digital Graphic Designing course focusing on visual communication, branding, and design tools such as Photoshop and Illustrator.",
+      category: "Certificate Course",
+    },
+    {
+      id: 2,
       degree: "Software Engineering Undergraduate",
       institution: "CINEC Campus",
       location: "Malabe",
@@ -22,18 +32,18 @@ const About = () => {
       category: "Undergraduate",
     },
     {
-      id: 2,
+      id: 3,
       degree: "Diploma in Information & Communicatio Technology",
       institution: "ICBT Campus",
-      location: "Bambalapitiya",
+      location: "Colombo 04",
       period: "2023",
       description:
         "Completed a diploma program covering foundational concepts in IT.",
       category: "Diploma",
     },
     {
-      id: 3,
-      degree: "G.C.E. Ordinary Level & Advanced Level (Commerce Stream)",
+      id: 4,
+      degree: "G.C.E. Ordinary Level & Advanced Level",
       institution: "Ananda Balika Vidyalaya",
       location: "Colombo 10",
       period: "2013 - 2021",
