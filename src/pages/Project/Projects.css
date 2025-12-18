@@ -655,3 +655,42 @@
   }
 }
 
+.project-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.project-media {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.project-media img.project-image,
+.project-media video.project-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-media video.project-video {
+  opacity: 0;
+  z-index: 2;
+}
+
+.project-media:hover video.project-video {
+  opacity: 1;
+}
+
+.project-media:hover img.project-image {
+  opacity: 0;
+}
