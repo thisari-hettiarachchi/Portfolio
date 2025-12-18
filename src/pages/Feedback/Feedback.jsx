@@ -92,17 +92,15 @@ const Feedback = () => {
                 <div className="feedback-slide" key={i}>
                   <div className="feedback-card">
                     <div className="feedback-header">
-                      
-                      <div className="feedback-info">
-                        <h3>{fb.name}</h3>
-                        <p className="role">{fb.role}</p>
-                      </div>
-
                       <img
                         src={fb.image ? `http://localhost:5000${fb.image}` : defaultImage}
                         className="feedback-avatar"
                         alt={fb.name}
                       />
+                      <div className="feedback-info">
+                        <h3>{fb.name}</h3>
+                        <p className="role">{fb.role}</p>
+                      </div>
                     </div>
 
                     <p className="message">{fb.message}</p>
