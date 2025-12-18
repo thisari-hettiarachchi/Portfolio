@@ -102,16 +102,14 @@ const Feedback = () => {
                     />
                     <h3>{fb.name}</h3>
                     <p className="role">{fb.role}</p>
-                    <p>"{fb.message}"</p>
+                    <p className="message">{fb.message}</p>
 
                     <div className="feedback-rating">
                       {[...Array(5)].map((_, i) => (
-                        <span
+                        <i
                           key={i}
-                          className={i < fb.rating ? "filled-star" : ""}
-                        >
-                          ★
-                        </span>
+                          className={`bx ${i < fb.rating ? 'bxs-star filled-star' : 'bx-star empty-star'}`}
+                        ></i>
                       ))}
                     </div>
                   </div>

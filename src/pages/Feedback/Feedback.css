@@ -31,21 +31,6 @@
   border-radius: 2px;
 }
 
-/* Slideshow Container */
-.feedback-slideshow-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 2.5rem auto;
-  padding: 0 80px;
-  overflow: hidden;
-}
-
-.feedback-container {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  gap: 3rem;
-}
-
 .feedback-card {
   background: linear-gradient(145deg, rgba(46, 178, 211, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
   border: 1px solid rgba(46, 178, 211, 0.25);
@@ -64,6 +49,9 @@
   overflow: hidden;
   min-width: 80px;
   flex-shrink: 0;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .feedback-card::before {
@@ -104,9 +92,6 @@
 
 .feedback-card:hover {
   transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 25px 70px rgba(46, 178, 211, 0.35),
-              0 5px 15px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(46, 178, 211, 0.3);
   border-color: rgba(46, 178, 211, 0.5);
 }
 
@@ -144,9 +129,9 @@
   letter-spacing: 2px;
 }
 
-.feedback-text {
+.message {
   font-style: italic;
-  color: var(--category);
+  color: var(--primary);
   margin: 1.5rem 0;
   font-size: 1.5rem;
   line-height: 1.8;
@@ -154,9 +139,10 @@
   position: relative;
   padding: 0 1.2rem;
   z-index: 1;
+  opacity: 0.5;
 }
 
-.feedback-text::before {
+.message::before {
   content: '"';
   position: absolute;
   top: -25px;
@@ -169,7 +155,7 @@
   transition: all 0.4s ease;
 }
 
-.feedback-text::after {
+.message::after {
   content: '"';
   position: absolute;
   bottom: -45px;
@@ -182,63 +168,12 @@
   transition: all 0.4s ease;
 }
 
-.feedback-card:hover .feedback-text::before,
-.feedback-card:hover .feedback-text::after {
+.feedback-card:hover .message::before,
+.feedback-card:hover .message::after {
   color: rgba(46, 178, 211, 0.3);
   transform: scale(1.2);
 }
 
-.feedback-date {
-  color: rgba(236, 240, 241, 0.5);
-  font-size: 0.9rem;
-  margin-top: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.feedback-card:hover .feedback-date {
-  color: rgba(236, 240, 241, 0.7);
-}
-
-/* Slideshow Navigation Arrows */
-.slideshow-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(46, 178, 211, 0.3);
-  border: 2px solid rgba(46, 178, 211, 0.5);
-  color: #2EB2D3;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 10;
-  backdrop-filter: blur(10px);
-}
-
-.slideshow-arrow:hover {
-  background: rgba(46, 178, 211, 0.6);
-  border-color: #2EB2D3;
-  color: #fff;
-  transform: translateY(-50%) scale(1.1);
-}
-
-
-/* Slideshow Indicators */
-.slideshow-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 2rem;
-}
-
-/* Feedback Carousel Indicators */
 .feedback-indicators {
   display: flex;
   justify-content: center;
@@ -254,15 +189,11 @@
   border: 2px solid rgba(46, 178, 211, 0.5);
   cursor: pointer;
   transition: all 0.4s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 .indicator.active {
-  background: #2EB2D3;
-  transform: scale(1.3);
-  box-shadow: 0 0 15px rgba(46, 178, 211, 0.6);
-}
-
-.indicator.active {
+  width: 40px;       
   background: #2EB2D3;
   transform: scale(1.3);
   box-shadow: 0 0 15px rgba(46, 178, 211, 0.6);
@@ -272,20 +203,23 @@
   background: rgba(46, 178, 211, 0.6);
   transform: scale(1.2);
 }
-
-/* Rating stars */
 .feedback-rating {
   display: flex;
   gap: 0.3rem;
   margin: 0.5rem 0;
 }
 
-.feedback-rating i {
-  color: #2EB2D3;
+.feedback-rating .empty-star {
+  color: #d1d1d1; 
   font-size: 1.1rem;
 }
 
-/* Button styles */
+.feedback-rating .filled-star {
+  color: #fbbf24;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+  font-size: 1.1rem;
+}
+
 .feedback-btn {
   margin-top: 2.5rem;
   display: inline-block; 
@@ -295,7 +229,7 @@
   transition: 0.5s;
   color: var(--text-primary);
   background: #2EB2D3;
-  box-shadow: 0px 5px 12px #409eb6; 
+  box-shadow: 0px 5px 5px #409eb6; 
   font-family: "Nunito", sans-serif;
   text-decoration: none;
   border: none;
@@ -323,7 +257,6 @@
   transform: translateX(6px);
 }
 
-/* Popup Overlay */
 .feedback-popup-overlay {
   position: fixed;
   top: 0;
@@ -337,7 +270,6 @@
   z-index: 1000;
 }
 
-/* Popup Form */
 .feedback-popup {
   background: var(--bg-color);
   border: 1px solid rgba(46, 178, 211, 0.3);
@@ -353,38 +285,21 @@
   font-size: 1.2rem;
 }
 
-.feedback-popup h3 {
-  color: var(--heading);
-  margin: 0 0 1.5rem 0;
-  font-size: 2.2rem;
-}
-
-/* Close button */
 .feedback-popup .close-btn {
   position: absolute;
-  top: 12px;
+  top: 4px;
   right: 12px;
-  background: #2eb2d3;
   border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  font-size: 2.5rem;
   cursor: pointer;
+  background: transparent;
   transition: background 0.3s ease;
 }
 
-.feedback-popup .close-btn:hover {
-  background: #28a0c3;
-}
-
-/* Show overlay when active */
 .feedback-popup-overlay.active {
   display: flex;
 }
 
-/* Input and textarea inside popup */
 .feedback-popup input,
 .feedback-popup textarea {
   width: 100%;
@@ -414,7 +329,6 @@
   resize: vertical;
 }
 
-/* Rating Selector */
 .feedback-rating-selector {
   display: flex;
   align-items: center;
@@ -423,14 +337,14 @@
 }
 
 .rating-label {
-  color: rgba(236, 240, 241, 0.8);
-  font-weight: 600;
+  color: rgba(236, 240, 241, 0.5);
+  font-weight: 500;
   font-size: 1rem;
 }
 
 .rating-stars {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .rating-star {
@@ -466,7 +380,6 @@
   background: #28a0c3;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .feedback-slideshow-container {
     padding: 0 60px;
@@ -488,7 +401,6 @@
   }
 }
 
-/* Carousel Wrapper */
 .feedback-carousel-wrapper {
   position: relative;
   max-width: 800px;
@@ -496,19 +408,16 @@
   padding: 0 4rem;
 }
 
-/* Carousel Container */
 .feedback-carousel {
   overflow: hidden;
   border-radius: 24px;
 }
 
-/* Carousel Track */
 .feedback-carousel-track {
   display: flex;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Feedback Slide */
 .feedback-slide {
   min-width: 100%;
   display: flex;
@@ -519,77 +428,6 @@
 .feedback-slide .feedback-card {
   width: 100%;
   max-width: 700px;
-}
-
-/* Carousel Navigation Buttons */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(46, 178, 211, 0.2);
-  border: 2px solid rgba(46, 178, 211, 0.4);
-  color: #2EB2D3;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-  backdrop-filter: blur(8px);
-}
-
-.carousel-btn:hover {
-  background: rgba(46, 178, 211, 0.4);
-  border-color: #2EB2D3;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 0 20px rgba(46, 178, 211, 0.5);
-}
-
-.carousel-btn i {
-  font-size: 2rem;
-}
-
-.prev-btn {
-  left: 0;
-}
-
-.next-btn {
-  right: 0;
-}
-
-/* Carousel Dots */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-top: 2rem;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(46, 178, 211, 0.3);
-  border: 2px solid rgba(46, 178, 211, 0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.dot:hover {
-  background: rgba(46, 178, 211, 0.5);
-  transform: scale(1.2);
-}
-
-.dot.active {
-  background: #2EB2D3;
-  border-color: #2EB2D3;
-  width: 30px;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(46, 178, 211, 0.6);
 }
 
 @media (max-width: 768px) {
@@ -621,7 +459,6 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
-  border: 2px solid #2EB2D3;
 }
 
 .feedback-rating {
