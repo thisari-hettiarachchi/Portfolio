@@ -9,7 +9,6 @@ const Feedback = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Fetch feedbacks from backend
   useEffect(() => {
     axios
       .get("http://localhost:5000/feedbacks")
@@ -17,23 +16,20 @@ const Feedback = () => {
       .catch(err => console.log(err));
   }, []);
 
-  // Auto-advance slideshow
   useEffect(() => {
     if (feedbacks.length <= 1 || isPaused) return;
 
     const interval = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % feedbacks.length);
-    }, 5000); // Change slide every 5 seconds
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, [feedbacks.length, isPaused]);
 
-  // Handle form changes
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Submit feedback
   const handleSubmit = async e => {
     e.preventDefault();
     try {
