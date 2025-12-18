@@ -9,35 +9,40 @@ const Feedback = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Fetch feedbacks
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/feedbacks")
-      .then(res => setFeedbacks(res.data))
-      .catch(err => console.log(err));
+    const fetchFeedbacks = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/feedbacks");
+        setFeedbacks(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchFeedbacks();
   }, []);
 
+  // Carousel autoplay
   useEffect(() => {
     if (feedbacks.length <= 1 || isPaused) return;
-
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % feedbacks.length);
-    }, 5000); 
-
+      setCurrentSlide((prev) => (prev + 1) % feedbacks.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, [feedbacks.length, isPaused]);
 
-  const handleChange = e => {
+  // Form input change
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  // Submit feedback
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:5000/feedbacks", form);
-      alert("Feedback added!");
       setForm({ name: "", role: "", message: "" });
       setIsPopupOpen(false);
-
       const res = await axios.get("http://localhost:5000/feedbacks");
       setFeedbacks(res.data);
     } catch (err) {
@@ -45,17 +50,10 @@ const Feedback = () => {
     }
   };
 
-  const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % feedbacks.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + feedbacks.length) % feedbacks.length);
-  };
-
-  const goToSlide = index => {
-    setCurrentSlide(index);
-  };
+  // Carousel controls
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % feedbacks.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + feedbacks.length) % feedbacks.length);
+  const goToSlide = (index) => setCurrentSlide(index);
 
   return (
     <section className="feedback-section">
@@ -64,13 +62,13 @@ const Feedback = () => {
       </h2>
 
       {feedbacks.length > 0 ? (
-        <div 
+        <div
           className="feedback-carousel-wrapper"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           <div className="feedback-carousel">
-            <div 
+            <div
               className="feedback-carousel-track"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
@@ -111,16 +109,10 @@ const Feedback = () => {
           )}
         </div>
       ) : (
-        <p style={{ color: "var(--text-primary)", textAlign: "center", marginTop: "2rem" }}>
-          No testimonials yet. Be the first to add one!
-        </p>
+        <p className="no-feedback">No testimonials yet. Be the first to add one!</p>
       )}
 
-      <button
-        className="feedback-btn"
-        type="button"
-        onClick={() => setIsPopupOpen(true)}
-      >
+      <button className="feedback-btn" onClick={() => setIsPopupOpen(true)}>
         <span>Add Review</span>
         <i className="bx bxs-plus-circle bx-tada" />
       </button>
@@ -128,13 +120,10 @@ const Feedback = () => {
       {isPopupOpen && (
         <div className="feedback-popup-overlay active">
           <div className="feedback-popup">
-            <button
-              className="close-btn"
-              onClick={() => setIsPopupOpen(false)}
-            >
+            <button className="close-btn" onClick={() => setIsPopupOpen(false)}>
               &times;
             </button>
-            <form id="feedback-popup-form" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <input
                 name="name"
                 placeholder="Your Name"
