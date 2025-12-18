@@ -226,13 +226,13 @@
 
 .feedback-rating .empty-star {
   color: #d1d1d1; 
-  font-size: 1.1rem;
+  font-size: 1.8rem;
 }
 
 .feedback-rating .filled-star {
   color: #fbbf24;
   text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
-  font-size: 1.1rem;
+  font-size: 1.8rem;
 }
 
 .feedback-btn {
