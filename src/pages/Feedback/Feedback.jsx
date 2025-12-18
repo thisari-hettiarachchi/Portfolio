@@ -91,17 +91,20 @@ const Feedback = () => {
               {feedbacks.map((fb, i) => (
                 <div className="feedback-slide" key={i}>
                   <div className="feedback-card">
-                    <img
-                      src={
-                        fb.image
-                          ? `http://localhost:5000${fb.image}`
-                          : defaultImage
-                      }
-                      className="feedback-avatar"
-                      alt={fb.name}
-                    />
-                    <h3>{fb.name}</h3>
-                    <p className="role">{fb.role}</p>
+                    <div className="feedback-header">
+                      
+                      <div className="feedback-info">
+                        <h3>{fb.name}</h3>
+                        <p className="role">{fb.role}</p>
+                      </div>
+
+                      <img
+                        src={fb.image ? `http://localhost:5000${fb.image}` : defaultImage}
+                        className="feedback-avatar"
+                        alt={fb.name}
+                      />
+                    </div>
+
                     <p className="message">{fb.message}</p>
 
                     <div className="feedback-rating">
@@ -113,6 +116,7 @@ const Feedback = () => {
                       ))}
                     </div>
                   </div>
+
                 </div>
               ))}
             </div>
