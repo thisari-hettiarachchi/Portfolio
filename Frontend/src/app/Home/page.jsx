@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import HeroImage from "/img.jpg";
 import "boxicons/css/boxicons.min.css";

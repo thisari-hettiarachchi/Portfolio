@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useTheme } from "../../../../src/context/ThemeContext";
 import Logo from "../../../Frontend/src/assets/logo.png";
 
 const Navbar = () => {

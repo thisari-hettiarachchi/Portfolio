@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "./components/Loading/LoadingSpinner";
-import Navbar from "../Frontend/src/app/Navbar/page";
+import Navbar from "./app/Navbar/page";
 import Home from "./pages/Home/Home";
-import About from "../Frontend/src/app/About/page";
-import Skills from "../Frontend/src/app/Skills/page";
-import Project from "../Frontend/src/app/Project/page";
-import Contact from "../Frontend/src/app/Contact/page";
-import Footer from "../Frontend/src/app/Footer/page";
-import Service from "../Frontend/src/app/Service/page";
+import About from "./app/About/page";
+import Skills from "./app/Skills/page";
+import Project from "./app/Project/page";
+import Contact from "./app/Contact/page";
+import Footer from "./app/Footer/page";
+import Service from "./app/Service/page";
 import "boxicons/css/boxicons.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Helmet } from "react-helmet";
-import Feedbacks from "./pages/Feedback/Feedback";
+import Feedbacks from "./app/Feedback/page";
 
 const App = () => {
   const [loading, setLoading] = useState(true);

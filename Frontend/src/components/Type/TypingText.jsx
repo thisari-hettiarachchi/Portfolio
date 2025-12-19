@@ -1,4 +1,6 @@
- import React, { useState, useEffect } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 
 const TypingText = () => {
   const roles = ["Full-Stack Developer", "UI/UX Designer"];
@@ -8,6 +10,7 @@ const TypingText = () => {
 
   useEffect(() => {
     const currentRole = roles[index];
+
     if (charIndex < currentRole.length) {
       const timeout = setTimeout(() => {
         setText((prev) => prev + currentRole.charAt(charIndex));
@@ -22,7 +25,7 @@ const TypingText = () => {
       }, 2000);
       return () => clearTimeout(timeout);
     }
-  }, [charIndex, index]);
+  }, [charIndex, index, roles]);
 
   return (
     <span className="typing-text-effect">
@@ -32,4 +35,4 @@ const TypingText = () => {
   );
 };
 
-export default TypingText; 
+export default TypingText;
