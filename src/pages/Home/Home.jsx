@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import HeroImage from "../../assets/img.jpg";
+import HeroImage from "../../../Frontend/assets/img.jpg";
 import "boxicons/css/boxicons.min.css";
 import useScrollReveal from "../../components/Scroll/useScrollReveal";
 import TypingText from "../../components/Type/TypingText";

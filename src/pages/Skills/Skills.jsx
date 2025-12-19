@@ -1,24 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import useScrollReveal from "../../components/Scroll/useScrollReveal";
 import "../Skills/Skills.css";
-import htmlImg from "../../assets/html.png";
-import cssImg from "../../assets/css.png";
-import jsImg from "../../assets/javascript.png";
-import phpImg from "../../assets/php.png";
-import pythonImg from "../../assets/python.png";
-import javaImg from "../../assets/java.png";
-import cppImg from "../../assets/c++.png";
-import mysqlImg from "../../assets/mysql.png";
-import figmaImg from "../../assets/figma.png";
-import reactImg from "../../assets/react.png";
-import githubImg from "../../assets/github.png";
-import vscodeImg from "../../assets/vs.png";
-import postmanImg from "../../assets/postman.png";
-import tailwindImg from "../../assets/tailwind.png";
-import gitImg from "../../assets/git.png";
-import bootstrapImg from "../../assets/bootstrap.png";
-import nodeImg from "../../assets/nodejs.png";
-import zeplinImg from "../../assets/zeplin.png";
+import htmlImg from "../../../Frontend/assets/html.png";
+import cssImg from "../../../Frontend/assets/css.png";
+import jsImg from "../../../Frontend/assets/javascript.png";
+import phpImg from "../../../Frontend/assets/php.png";
+import pythonImg from "../../../Frontend/assets/python.png";
+import javaImg from "../../../Frontend/assets/java.png";
+import cppImg from "../../../Frontend/assets/c++.png";
+import mysqlImg from "../../../Frontend/assets/mysql.png";
+import figmaImg from "../../../Frontend/assets/figma.png";
+import reactImg from "../../../Frontend/assets/react.png";
+import githubImg from "../../../Frontend/assets/github.png";
+import vscodeImg from "../../../Frontend/assets/vs.png";
+import postmanImg from "../../../Frontend/assets/postman.png";
+import tailwindImg from "../../../Frontend/assets/tailwind.png";
+import gitImg from "../../../Frontend/assets/git.png";
+import bootstrapImg from "../../../Frontend/assets/bootstrap.png";
+import nodeImg from "../../../Frontend/assets/nodejs.png";
+import zeplinImg from "../../../Frontend/assets/zeplin.png";
 
 const skillImages = {
   html: htmlImg,

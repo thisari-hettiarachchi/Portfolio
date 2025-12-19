@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import "../Navbar/Navbar.css";
-import Logo from "../../assets/logo.png";
+import Logo from "../../../Frontend/assets/logo.png";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
