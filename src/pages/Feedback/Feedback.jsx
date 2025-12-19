@@ -1,64 +1,74 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Feedback.css";
+import defaultImage from "../../assets/feedback.png"; // ✅ DEFAULT IMAGE
 
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [form, setForm] = useState({ name: "", role: "", message: "" });
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Fetch feedbacks from backend
+  const [form, setForm] = useState({
+    name: "",
+    role: "",
+    message: "",
+    image: null,
+    rating: 0,
+  });
+
+  /* ---------------- FETCH FEEDBACKS ---------------- */
+  const fetchFeedbacks = async () => {
+    const res = await axios.get("http://localhost:5000/feedbacks");
+    setFeedbacks(res.data);
+  };
+
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/feedbacks")
-      .then(res => setFeedbacks(res.data))
-      .catch(err => console.log(err));
+    fetchFeedbacks();
   }, []);
 
-  // Auto-advance slideshow
   useEffect(() => {
     if (feedbacks.length <= 1 || isPaused) return;
-
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % feedbacks.length);
-    }, 5000); // Change slide every 5 seconds
-
+      setCurrentSlide((prev) => (prev + 1) % feedbacks.length);
+    }, 5000);
     return () => clearInterval(interval);
-  }, [feedbacks.length, isPaused]);
+  }, [feedbacks, isPaused]);
 
-  // Handle form changes
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: name === "rating" ? Number(value) : value });
   };
 
-  // Submit feedback
-  const handleSubmit = async e => {
+  const handleFileChange = (e) => {
+    setForm({ ...form, image: e.target.files[0] });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      await axios.post("http://localhost:5000/feedbacks", form);
-      alert("Feedback added!");
-      setForm({ name: "", role: "", message: "" });
+      const formData = new FormData();
+
+      formData.append("name", form.name);
+      formData.append("role", form.role);
+      formData.append("message", form.message);
+      formData.append("rating", form.rating);
+
+      if (form.image) {
+        formData.append("image", form.image);
+      }
+
+      await axios.post("http://localhost:5000/feedbacks", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      setForm({ name: "", role: "", message: "", image: null, rating: 5 });
       setIsPopupOpen(false);
-
-      const res = await axios.get("http://localhost:5000/feedbacks");
-      setFeedbacks(res.data);
+      fetchFeedbacks();
     } catch (err) {
-      console.error(err);
+      alert(err.response?.data?.error || "Error submitting feedback");
     }
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % feedbacks.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + feedbacks.length) % feedbacks.length);
-  };
-
-  const goToSlide = index => {
-    setCurrentSlide(index);
   };
 
   return (
@@ -67,100 +77,96 @@ const Feedback = () => {
         <i className="bx bxs-comment"></i> Testimonial
       </h2>
 
-      {feedbacks.length > 0 ? (
-        <div 
+      {feedbacks.length > 0 && (
+        <div
           className="feedback-carousel-wrapper"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           <div className="feedback-carousel">
-            <div 
+            <div
               className="feedback-carousel-track"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {feedbacks.map((fb, index) => (
-                <div key={index} className="feedback-slide">
+              {feedbacks.map((fb, i) => (
+                <div className="feedback-slide" key={i}>
                   <div className="feedback-card">
-                    <h3>{fb.name}</h3>
-                    <p className="role">{fb.role}</p>
-                    <p className="feedback-text">"{fb.message}"</p>
-                    <p className="feedback-date">
-                      {fb.createdAt ? new Date(fb.createdAt).toLocaleDateString() : ""}
-                    </p>
+                    <div className="feedback-header">
+                      <img
+                        src={fb.image ? `http://localhost:5000${fb.image}` : defaultImage}
+                        className="feedback-avatar"
+                        alt={fb.name}
+                      />
+                      <div className="feedback-info">
+                        <h3>{fb.name}</h3>
+                        <p className="role">{fb.role}</p>
+                      </div>
+                    </div>
+
+                    <p className="message">{fb.message}</p>
+
+                    <div className="feedback-rating">
+                      {[...Array(5)].map((_, i) => (
+                        <i
+                          key={i}
+                          className={`bx ${i < fb.rating ? 'bxs-star filled-star' : 'bx-star empty-star'}`}
+                        ></i>
+                      ))}
+                    </div>
                   </div>
+
                 </div>
               ))}
             </div>
           </div>
-
           {feedbacks.length > 1 && (
-            <>
-              <button className="carousel-btn prev-btn" onClick={prevSlide}>
-                <i className="bx bx-chevron-left"></i>
-              </button>
-              <button className="carousel-btn next-btn" onClick={nextSlide}>
-                <i className="bx bx-chevron-right"></i>
-              </button>
-
-              <div className="carousel-dots">
-                {feedbacks.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`dot ${index === currentSlide ? "active" : ""}`}
-                    onClick={() => goToSlide(index)}
-                  />
-                ))}
-              </div>
-            </>
+            <div className="feedback-indicators">
+              {feedbacks.map((_, i) => (
+                <span
+                  key={i}
+                  className={`indicator ${i === currentSlide ? "active" : ""}`}
+                  onClick={() => setCurrentSlide(i)}
+                />
+              ))}
+            </div>
           )}
         </div>
-      ) : (
-        <p style={{ color: "var(--text-primary)", textAlign: "center", marginTop: "2rem" }}>
-          No testimonials yet. Be the first to add one!
-        </p>
       )}
 
-      <button
-        className="feedback-btn"
-        type="button"
-        onClick={() => setIsPopupOpen(true)}
-      >
-        <span>Add Review</span>
-        <i className="bx bxs-plus-circle bx-tada" />
+      <button className="feedback-btn" onClick={() => setIsPopupOpen(true)}>
+        Add Review <i className="bx bx-plus"></i>
       </button>
 
       {isPopupOpen && (
         <div className="feedback-popup-overlay active">
           <div className="feedback-popup">
-            <button
-              className="close-btn"
-              onClick={() => setIsPopupOpen(false)}
-            >
+            <button className="close-btn" onClick={() => setIsPopupOpen(false)}>
               &times;
             </button>
-            <form id="feedback-popup-form" onSubmit={handleSubmit}>
-              <input
-                name="name"
-                placeholder="Your Name"
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
-              <input
-                name="role"
-                placeholder="Your Role"
-                value={form.role}
-                onChange={handleChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Your Feedback"
-                value={form.message}
-                onChange={handleChange}
-                required
-              />
-              <button type="submit">Submit Feedback</button>
+
+            <form onSubmit={handleSubmit}>
+              <input name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
+              <input name="role" placeholder="Role" value={form.role} onChange={handleChange} required />
+              <textarea name="message" placeholder="Message" value={form.message} onChange={handleChange} required />
+
+              <div className="feedback-rating-selector">
+                <span className="rating-label">Rating:</span>
+                <div className="rating-stars">
+                  {[1, 2, 3, 4, 5].map((starVal) => (
+                    <span
+                      key={starVal}
+                      className={`rating-star ${form.rating >= starVal ? "active" : ""}`}
+                      onClick={() => setForm({ ...form, rating: starVal })}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <input type="file" accept="image/*" onChange={handleFileChange} />
+
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>

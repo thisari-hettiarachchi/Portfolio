@@ -12,6 +12,10 @@ import SeatifyImg from "./Seatify.jpg";
 import AutoMartLogo from "./auto mart.png";
 import TurboTechWeb from "./TurboTech-Web.png";
 import TurboTechUI from "./TurboTech.png";
+import YeshoImg from "./Yesho.png";
+import SeatifyMP4 from "./Seatify.mp4";
+import RedovenMP4 from "./Pizza.mp4";
+import YeshoMP4 from "./Yesho.mp4";
 
 
 export {
@@ -28,5 +32,9 @@ export {
     SeatifyImg,
     AutoMartLogo, 
     TurboTechWeb,
-    TurboTechUI
+    TurboTechUI, 
+    YeshoImg,
+    SeatifyMP4,
+    RedovenMP4,
+    YeshoMP4
 };

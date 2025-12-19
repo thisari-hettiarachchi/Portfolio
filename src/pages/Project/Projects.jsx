@@ -4,7 +4,6 @@ import "./Projects.css";
 import {
   YumCraveImg,
   ShopMeImg,
-  PortfolioImg,
   CafeCloudImg,
   ChatbotImg,
   AureaImg,
@@ -14,14 +13,38 @@ import {
   SpaceFinderImg,
   SeatifyImg, 
   TurboTechWeb,
-  TurboTechUI
+  TurboTechUI,
+  YeshoImg,
+  SeatifyMP4,
+  RedovenMP4,
+  YeshoMP4
 } from "../../assets/index.js";
 
 const projectData = [
   {
+    title: "Official Website for Yesho Intelligence (pvt) Ltd.",
+    category: "Web Apps",
+    image: YeshoImg,
+    video: YeshoMP4,
+    description:
+      "The official website for Yesho Intelligence (Pvt) Ltd., showcasing company details, services, team, and updates. Designed with a clean, responsive interface for seamless user experience across devices.",
+    toolsandlanguages: [
+      "nextjs",
+      "tailwind css",
+      "nodemailler",
+    ],
+    githubLinks: [
+      {
+        label: "Code",
+        url: "https://github.com/thisari-hettiarachchi/Yesho.git",
+      },
+    ],
+  },
+  {
     title: "RedOven - Pizza Ordering Website",
     category: "Web Apps",
     image: RedovenImg,
+    video: RedovenMP4,
     description:
       "A pizza delivery web app enabling users to place orders, customize pizzas, and track deliveries in real time. Includes admin features for menu and order management.",
     toolsandlanguages: [
@@ -36,20 +59,6 @@ const projectData = [
       {
         label: "code",
         url: "https://github.com/DH-0216/pizza-order-delivery-system.git",
-      },
-    ],
-  },
-  {
-    title: "Portfolio - My Personal Website",
-    category: "Web Apps",
-    image: PortfolioImg,
-    description:
-      "A personal portfolio website showcasing my details, projects, skills, and services. It features multiple responsive sections, a downloadable resume, and integrated links for connecting via various social platforms.",
-    toolsandlanguages: ["React", "CSS", "JavaScript"],
-    githubLinks: [
-      {
-        label: "Code",
-        url: "https://github.com/thisari-hettiarachchi/React-Portfolio.git",
       },
     ],
   },
@@ -141,6 +150,7 @@ const projectData = [
     title: "Seatify - Movie Ticket Booking System",
     category: "Web Apps",
     image: SeatifyImg,
+    video: SeatifyMP4,
     description:
       "An online movie booking app where users can browse shows, view seat layouts, and purchase tickets with ease. Responsive UI with streamlined booking flow.",
     toolsandlanguages: [
@@ -215,8 +225,8 @@ const projectData = [
       },
     ],
   },
+  
 ];
-
 
 const categories = ["Web Apps", "UI Design","Desktop Application"];
 
@@ -268,7 +278,6 @@ const Projects = () => {
       setActiveIndex(Math.min(newIndex, filteredProjects.length - 1));
     }
   };
-
 
   const handleCategoryClick = (cat) => {
     setSelectedCategory(cat);
@@ -396,12 +405,44 @@ const Projects = () => {
               }`}
               key={index}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                onClick={() => openModal(project.image, project.title)}
-                style={{ cursor: "pointer" }}
-              />
+              <div
+                className="project-media"
+                onMouseEnter={() => {
+                  const vid = document.getElementById(`video-${index}`);
+                  if (vid) vid.play();
+                }}
+                onMouseLeave={() => {
+                  const vid = document.getElementById(`video-${index}`);
+                  if (vid) vid.pause();
+                  if (vid) vid.currentTime = 0;
+                }}
+              >
+                {project.video ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="project-image"
+                    />
+                    <video
+                      id={`video-${index}`}
+                      src={project.video}
+                      muted
+                      loop
+                      preload="metadata"
+                      className="project-video"
+                    />
+                  </>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    onClick={() => openModal(project.image, project.title)}
+                    style={{ cursor: "pointer" }}
+                  />
+                )}
+              </div>
+
               <h3>{project.title}</h3>
 
               {project.category !== "Graphic Design" && (
@@ -445,7 +486,6 @@ const Projects = () => {
               )}
             </div>
           ))}
-
         </div>
         {filteredProjects.length > 1 && (
           <button

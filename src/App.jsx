@@ -82,6 +82,7 @@ const App = () => {
           <Skills />
           <Project />
           <Service />
+          <Feedbacks />
           <Contact />
           <Footer />
 
