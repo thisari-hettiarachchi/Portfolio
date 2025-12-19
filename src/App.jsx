@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import LoadingSpinner from "./components/Loading/LoadingSpinner";
 import Navbar from "./pages/Navbar/Navbar";
 import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
+import About from "../Frontend/src/app/About/page";
 import Skills from "./pages/Skills/Skills";
 import Project from "./pages/Project/Projects";
 import Contact from "./pages/Contact/Contact";
