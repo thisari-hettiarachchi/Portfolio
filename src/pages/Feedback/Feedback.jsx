@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Feedback.css";
-import defaultImage from "../../assets/feedback.png"; // ✅ DEFAULT IMAGE
+import defaultImage from "../../assets/feedback.png";
 
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -13,13 +13,12 @@ const Feedback = () => {
     name: "",
     role: "",
     message: "",
-    image: null,
-    rating: 0,
+    rating: 5,
   });
 
-  /* ---------------- FETCH FEEDBACKS ---------------- */
+  // FETCH FEEDBACKS
   const fetchFeedbacks = async () => {
-    const res = await axios.get("http://localhost:5000/feedbacks");
+    const res = await axios.get("/api/feedbacks");
     setFeedbacks(res.data);
   };
 
@@ -37,33 +36,16 @@ const Feedback = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: name === "rating" ? Number(value) : value });
-  };
-
-  const handleFileChange = (e) => {
-    setForm({ ...form, image: e.target.files[0] });
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const formData = new FormData();
+      await axios.post("/api/feedbacks", form);
 
-      formData.append("name", form.name);
-      formData.append("role", form.role);
-      formData.append("message", form.message);
-      formData.append("rating", form.rating);
-
-      if (form.image) {
-        formData.append("image", form.image);
-      }
-
-      await axios.post("http://localhost:5000/feedbacks", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      setForm({ name: "", role: "", message: "", image: null, rating: 5 });
+      setForm({ name: "", role: "", message: "", rating: 5 });
       setIsPopupOpen(false);
       fetchFeedbacks();
     } catch (err) {
@@ -93,7 +75,7 @@ const Feedback = () => {
                   <div className="feedback-card">
                     <div className="feedback-header">
                       <img
-                        src={fb.image ? `http://localhost:5000${fb.image}` : defaultImage}
+                        src={defaultImage}
                         className="feedback-avatar"
                         alt={fb.name}
                       />
@@ -109,27 +91,19 @@ const Feedback = () => {
                       {[...Array(5)].map((_, i) => (
                         <i
                           key={i}
-                          className={`bx ${i < fb.rating ? 'bxs-star filled-star' : 'bx-star empty-star'}`}
+                          className={`bx ${
+                            i < fb.rating
+                              ? "bxs-star filled-star"
+                              : "bx-star empty-star"
+                          }`}
                         ></i>
                       ))}
                     </div>
                   </div>
-
                 </div>
               ))}
             </div>
           </div>
-          {feedbacks.length > 1 && (
-            <div className="feedback-indicators">
-              {feedbacks.map((_, i) => (
-                <span
-                  key={i}
-                  className={`indicator ${i === currentSlide ? "active" : ""}`}
-                  onClick={() => setCurrentSlide(i)}
-                />
-              ))}
-            </div>
-          )}
         </div>
       )}
 
@@ -140,31 +114,35 @@ const Feedback = () => {
       {isPopupOpen && (
         <div className="feedback-popup-overlay active">
           <div className="feedback-popup">
-            <button className="close-btn" onClick={() => setIsPopupOpen(false)}>
+            <button
+              className="close-btn"
+              onClick={() => setIsPopupOpen(false)}
+            >
               &times;
             </button>
 
             <form onSubmit={handleSubmit}>
-              <input name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
-              <input name="role" placeholder="Role" value={form.role} onChange={handleChange} required />
-              <textarea name="message" placeholder="Message" value={form.message} onChange={handleChange} required />
-
-              <div className="feedback-rating-selector">
-                <span className="rating-label">Rating:</span>
-                <div className="rating-stars">
-                  {[1, 2, 3, 4, 5].map((starVal) => (
-                    <span
-                      key={starVal}
-                      className={`rating-star ${form.rating >= starVal ? "active" : ""}`}
-                      onClick={() => setForm({ ...form, rating: starVal })}
-                    >
-                      ★
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <input type="file" accept="image/*" onChange={handleFileChange} />
+              <input
+                name="name"
+                placeholder="Name"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+              <input
+                name="role"
+                placeholder="Role"
+                value={form.role}
+                onChange={handleChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                value={form.message}
+                onChange={handleChange}
+                required
+              />
 
               <button type="submit">Submit</button>
             </form>
