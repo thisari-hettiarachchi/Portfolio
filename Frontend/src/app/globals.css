@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap");
+
+/* globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+  --bg-color: #000000;
+  --box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  --box-shadow-2:0 10px 30px rgba(46, 178, 211, 0.15);
+  --text-primary: #ffffff;
+  --primary: #2EB2D3;
+  --heading: #00aced;
+  --img-shadow: 0 5px 10px #2EB2D3;
+  --category: #ecf0f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+}
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg-color);
+  font-family: "Poppins", sans-serif;
+}
+
+*::selection {
+  background: #2b3dda;
+  color: #fff;
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+html::-webkit-scrollbar-track {
+  background: #80ccdf94;
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+#scroll-top {
+  position: fixed;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  font-size: 2rem;
+  background: var(--primary);
+  color: rgb(13, 0, 44);
+  border-radius: 50%;
+  transition: 1s linear;
+  z-index: 1000;
+}
+#scroll-top.active {
+  top: calc(100% - 12rem);
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 15rem;        
+  right: 20px;
+  z-index: 999;
+  background-color: #25D366;
+  color: white;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;   
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;   
+  text-decoration: none; 
+  border: none;  
+  transition: 1s linear;   
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); 
+}
+
+.whatsapp-float:active {
+  transform: scale(0.95); 
+}
+
+.whatsapp-float.active {
+  display: flex; 
+}
