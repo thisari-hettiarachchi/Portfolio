@@ -1,5 +1,8 @@
+"use client"; // Client Component
+
 import React from "react";
-import Logo from "../../../Frontend/src/assets/logo.png";
+import Image from "next/image";
+import "boxicons/css/boxicons.min.css";
 
 const Footer = () => {
   return (
@@ -8,7 +11,13 @@ const Footer = () => {
 
         {/* Logo Box */}
         <div className="flex flex-col items-center gap-4 flex-1 min-w-[250px]">
-          <img src={Logo} alt="Thisari logo" className="h-24 w-auto" />
+          <Image
+            src="/assets/logo.png"
+            alt="Thisari logo"
+            width={96}
+            height={96}
+            className="object-contain"
+          />
           <h4 className="text-2xl text-gray-800 font-normal">Thisari Hettiarachchi</h4>
         </div>
 

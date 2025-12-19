@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import HeroImage from "/img.jpg";
 import "boxicons/css/boxicons.min.css";
-import useScrollReveal from "../components/Scroll/useScrollReveal";
-import TypingText from "../components/Type/TypingText";
-import ParticleBackground from "../components/Background/ParticlesBackground";
+import useScrollReveal from "../../components/Scroll/useScrollReveal";
+import TypingText from "../../components/Type/TypingText";
+import ParticleBackground from "../../components/Background/ParticlesBackground";
 
 const Home = () => {
   useScrollReveal();
@@ -15,6 +14,7 @@ const Home = () => {
       id="home"
       className="relative flex flex-col md:flex-row items-center justify-between min-h-screen px-6 md:px-20 overflow-hidden bg-gray-900 text-white"
     >
+      {/* Particle Background */}
       <ParticleBackground />
 
       {/* Content */}
@@ -25,9 +25,11 @@ const Home = () => {
             Thisari Hettiarachchi
           </span>
         </h2>
+
         <p className="text-2xl md:text-2.5xl font-semibold mb-6">
           I am a <span className="text-cyan-400"><TypingText /></span>
         </p>
+
         <a
           href="#about"
           className="inline-flex items-center px-8 py-4 rounded-full bg-cyan-500 text-white font-medium shadow-lg hover:bg-cyan-600 transition-all"
@@ -39,56 +41,24 @@ const Home = () => {
         {/* Social Icons */}
         <div className="mt-16">
           <ul className="flex space-x-4">
-            <li>
-              <a
-                href="https://www.linkedin.com/in/thisari-hettiarachchi-40a431228"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-cyan-500 rounded-full text-black hover:text-white transition"
-              >
-                <i className="bx bxl-linkedin"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/thisari-hettiarachchi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-cyan-500 rounded-full text-black hover:text-white transition"
-              >
-                <i className="bx bxl-github"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="mailto:msthisari@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-cyan-500 rounded-full text-black hover:text-white transition"
-              >
-                <i className="bx bxl-gmail"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.figma.com/@thettiarachchi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-cyan-500 rounded-full text-black hover:text-white transition"
-              >
-                <i className="bx bxl-figma"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.behance.net/thisarihettiar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-cyan-500 rounded-full text-black hover:text-white transition"
-              >
-                <i className="bx bxl-behance"></i>
-              </a>
-            </li>
+            {[
+              { href: "https://www.linkedin.com/in/thisari-hettiarachchi-40a431228", icon: "bxl-linkedin" },
+              { href: "https://github.com/thisari-hettiarachchi", icon: "bxl-github" },
+              { href: "mailto:msthisari@gmail.com", icon: "bxl-gmail" },
+              { href: "https://www.figma.com/@thettiarachchi", icon: "bxl-figma" },
+              { href: "https://www.behance.net/thisarihettiar", icon: "bxl-behance" },
+            ].map((social, index) => (
+              <li key={index}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-cyan-500 rounded-full text-black hover:text-white transition"
+                >
+                  <i className={`bx ${social.icon}`}></i>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -97,7 +67,7 @@ const Home = () => {
       <div className="flex-1 flex justify-center items-center relative mt-10 md:mt-0 z-10">
         <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-cyan-500 animate-float">
           <Image
-            src={HeroImage}
+            src="/img.jpg"
             alt="Hero Thisari"
             fill
             className="object-cover rounded-full"

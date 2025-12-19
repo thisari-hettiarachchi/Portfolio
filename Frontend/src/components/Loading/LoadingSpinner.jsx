@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import "./LoadingSpinner.css";
 
 const LoadingSpinner = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);

@@ -1,10 +1,11 @@
+"use client"; // mark as client component
+
 import React, { useEffect, useState } from "react";
-import Logo from "../../../Frontend/src/assets/logo.png";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, toggleTheme, isDark } = useTheme();
+  // const { theme, toggleTheme, isDark } = useTheme(); // optional
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,17 +27,23 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isDark ? "bg-black/60 border-b border-white/20 shadow-lg" : "bg-white/10 border-b border-white/20 shadow-lg"} backdrop-blur-lg`}>
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/10 border-b border-white/20 shadow-lg backdrop-blur-lg">
       <div className="flex items-center justify-between px-6 py-4 md:py-6">
         {/* Logo */}
         <a href="/" className="flex items-center gap-4 text-2xl font-extrabold">
-          <img src={Logo} alt="Thisari logo" className="h-16 w-auto" />
-          <span className="text-gray-800 dark:text-gray-200 hover:text-blue-400 transition-colors">Thisari</span>
+          <img
+            src="/assets/logo.png"
+            alt="Thisari logo"
+            className="h-16 w-auto"
+          />
+          <span className="text-gray-800 hover:text-blue-400 transition-colors">
+            Thisari
+          </span>
         </a>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-3xl text-gray-800 dark:text-gray-200"
+          className="md:hidden text-3xl text-gray-800"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           ☰
@@ -50,7 +57,11 @@ const Navbar = () => {
                 <a
                   href={`#${section}`}
                   onClick={() => setMenuOpen(false)}
-                  className={`text-lg md:text-base font-semibold transition-colors border-b-2 md:border-b-0 pb-1 ${activeSection === section ? "text-blue-400 border-blue-400" : "text-gray-800 dark:text-gray-200 border-transparent hover:text-blue-400 hover:border-blue-400"}`}
+                  className={`text-lg md:text-base font-semibold transition-colors border-b-2 md:border-b-0 pb-1 ${
+                    activeSection === section
+                      ? "text-blue-400 border-blue-400"
+                      : "text-gray-800 border-transparent hover:text-blue-400 hover:border-blue-400"
+                  }`}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
                 </a>
@@ -58,15 +69,6 @@ const Navbar = () => {
             ))}
           </ul>
         </nav>
-
-        {/* Optional Theme Toggle */}
-        {/* <button 
-          className="ml-4 w-10 h-10 flex items-center justify-center text-gray-800 dark:text-gray-200 transition-transform"
-          onClick={toggleTheme}
-          aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
-        >
-          <i className={`bx ${isDark ? 'bx-sun' : 'bx-moon'} text-xl`}></i>
-        </button> */}
       </div>
     </header>
   );
