@@ -18,7 +18,7 @@ import {
   SeatifyMP4,
   RedovenMP4,
   YeshoMP4
-} from "../../../Frontend/assets/index.js";
+} from "../../../Frontend/src/assets/index.js";
 
 const projectData = [
   {

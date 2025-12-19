@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../About/About.css";
-import profilePic from "../../../Frontend/assets/Profile pic.png";
-import resume from "../../../Frontend/assets/Thisari Hettiarachchi CV.pdf";
+import profilePic from "../../../Frontend/src/assets/Profile pic.png";
+import resume from "../../../Frontend/src/assets/Thisari Hettiarachchi CV.pdf";
 import TypingText from "../../components/Type/TypingText";
 
 const About = () => {

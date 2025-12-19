@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Feedback.css";
-import defaultImage from "../../../Frontend/assets/feedback.png";
+import defaultImage from "../../../Frontend/src/assets/feedback.png";
 
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
