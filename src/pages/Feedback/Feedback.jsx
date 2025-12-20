@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../axios"; 
+import api from "../../utils/axios"; 
 import "./Feedback.css";
 import defaultImage from "../../assets/feedback.png";
 
