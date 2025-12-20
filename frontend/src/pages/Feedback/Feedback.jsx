@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import api from "../../utils/axios"; 
 import "./Feedback.css";
 import defaultImage from "../../assets/feedback.png";
 
 const Feedback = () => {
-  const [feedbacks, setFeedbacks] = useState([]); // always an array
+  const [feedbacks, setFeedbacks] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -13,13 +12,19 @@ const Feedback = () => {
     name: "",
     role: "",
     message: "",
-    rating: 5, // default rating
+    rating: 0,
   });
 
+  const backendURL = import.meta.env.VITE_API_URL;
+
+  // Fetch feedbacks
   const fetchFeedbacks = async () => {
     try {
-      const res = await api.get("/feedbacks"); // use api instance
-      setFeedbacks(Array.isArray(res.data) ? res.data : []);
+      const res = await fetch(`${backendURL}/api/feedbacks/get`, {
+        credentials: "include",
+      });
+      const data = await res.json();
+      setFeedbacks(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error("Error fetching feedbacks:", err);
       setFeedbacks([]);
@@ -30,6 +35,7 @@ const Feedback = () => {
     fetchFeedbacks();
   }, []);
 
+  // Carousel auto-slide
   useEffect(() => {
     if (feedbacks.length <= 1 || isPaused) return;
     const interval = setInterval(() => {
@@ -38,20 +44,41 @@ const Feedback = () => {
     return () => clearInterval(interval);
   }, [feedbacks, isPaused]);
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
+  // Handle star rating click
+  const handleStarClick = (rating) => {
+    setForm({ ...form, rating });
+  };
+
+  // Submit feedback
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/feedbacks", form); // use api instance
+      const res = await fetch(`${backendURL}/api/feedbacks/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.error || "Error submitting feedback");
+      }
+
+      alert("Feedback submitted successfully!");
       setForm({ name: "", role: "", message: "", rating: 5 });
       setIsPopupOpen(false);
       fetchFeedbacks();
     } catch (err) {
-      alert(err.response?.data?.error || "Error submitting feedback");
+      alert(err.message);
     }
   };
 
@@ -62,7 +89,7 @@ const Feedback = () => {
       </h2>
 
       {/* Carousel */}
-      {Array.isArray(feedbacks) && feedbacks.length > 0 && (
+      {feedbacks.length > 0 && (
         <div
           className="feedback-carousel-wrapper"
           onMouseEnter={() => setIsPaused(true)}
@@ -79,23 +106,21 @@ const Feedback = () => {
                     <div className="feedback-header">
                       <img
                         src={defaultImage}
-                        className="feedback-avatar"
                         alt={fb.name || "User"}
+                        className="feedback-avatar"
                       />
                       <div className="feedback-info">
                         <h3>{fb.name || "Anonymous"}</h3>
                         <p className="role">{fb.role || "User"}</p>
                       </div>
                     </div>
-
-                    <p className="message">{fb.message || ""}</p>
-
+                    <p className="message">{fb.message}</p>
                     <div className="feedback-rating">
-                      {[...Array(5)].map((_, i) => (
+                      {[...Array(5)].map((_, idx) => (
                         <i
-                          key={i}
+                          key={idx}
                           className={`bx ${
-                            i < (fb.rating || 0)
+                            idx < (fb.rating || 0)
                               ? "bxs-star filled-star"
                               : "bx-star empty-star"
                           }`}
@@ -110,6 +135,7 @@ const Feedback = () => {
         </div>
       )}
 
+      {/* Add Review Button */}
       <button className="feedback-btn" onClick={() => setIsPopupOpen(true)}>
         Add Review <i className="bx bx-plus"></i>
       </button>
@@ -118,58 +144,75 @@ const Feedback = () => {
       {isPopupOpen && (
         <div className="feedback-popup-overlay active">
           <div className="feedback-popup">
-            <button
-              className="close-btn"
-              onClick={() => setIsPopupOpen(false)}
-            >
+            <button className="close-btn" onClick={() => setIsPopupOpen(false)}>
               &times;
             </button>
 
-            <form onSubmit={handleSubmit}>
-              <input
-                name="name"
-                placeholder="Name"
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
-              <input
-                name="role"
-                placeholder="Role"
-                value={form.role}
-                onChange={handleChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                value={form.message}
-                onChange={handleChange}
-                required
-              />
-
-              {/* Rating Label and Stars */}
-              <label className="rating-label">Rating:</label>
-              <div className="star-rating">
-                {[...Array(5)].map((_, i) => (
-                  <i
-                    key={i}
-                    className={`bx ${
-                      i < form.rating
-                        ? "bxs-star filled-star"
-                        : "bx-star empty-star"
-                    }`}
-                    onClick={() => setForm({ ...form, rating: i + 1 })}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "1.5rem",
-                      marginRight: "4px",
-                    }}
-                  ></i>
-                ))}
+            <form onSubmit={handleSubmit} className="feedback-form">
+              {/* Name Input */}
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
-              <button type="submit">Submit</button>
+              {/* Role Input */}
+              <div className="form-group">
+                <label htmlFor="role">Role</label>
+                <input
+                  type="text"
+                  id="role"
+                  name="role"
+                  placeholder="Your Role"
+                  value={form.role}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* Message Textarea */}
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Your Feedback"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* Rating */}
+              <div className="form-group">
+                <label>Rating</label>
+                <div className="star-rating">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      onClick={() => handleStarClick(star)}
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "2rem",
+                        color: star <= form.rating ? "#fbbf24" : "#4a5568",
+                      }}
+                    >
+                      {star <= form.rating ? "★" : "☆"}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <button type="submit" className="submit-btn">
+                Submit
+              </button>
             </form>
           </div>
         </div>

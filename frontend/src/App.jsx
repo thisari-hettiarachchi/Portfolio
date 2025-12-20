@@ -9,7 +9,7 @@ import Contact from "./pages/Contact/Contact";
 import Footer from "./pages/Footer/Footer";
 import Service from "./pages/Service/Service";
 import Feedback from "./pages/Feedback/Feedback";
-import "boxicons/css/boxicons.min.css";
+import 'boxicons/css/boxicons.min.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Helmet } from "react-helmet";
