@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import useScrollReveal from "../../components/Scroll/useScrollReveal";
-import "../Skills/Skills.css";
+import "./Skills.css";
 import htmlImg from "../../assets/html.png";
 import cssImg from "../../assets/css.png";
 import jsImg from "../../assets/javascript.png";
