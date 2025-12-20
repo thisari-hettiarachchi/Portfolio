@@ -155,7 +155,7 @@
   letter-spacing: 2px;
 }
 
-.message {
+.feedback-carousel .message {
   font-style: italic;
   color: var(--text-primary);
   margin: 1.5rem 0;
@@ -168,7 +168,7 @@
   opacity: 0.9;
 }
 
-.message::before {
+.feedback-carousel .message::before {
   content: '"';
   position: absolute;
   top: -25px;
@@ -181,7 +181,7 @@
   transition: all 0.4s ease;
 }
 
-.message::after {
+.feedback-carousel .message::after {
   content: '"';
   position: absolute;
   bottom: -45px;
