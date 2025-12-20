@@ -1,0 +1,115 @@
+.admin-feedback-dashboard {
+  padding: 2.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin-top: 5rem;
+}
+
+.admin-feedback-dashboard h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #0284c7;
+  font-size: 4rem; 
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  margin: 2.5rem 0;
+}
+
+.feedback-table {
+  width: 100%;
+  max-width: 1500px;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.feedback-table th,
+.feedback-table td {
+  padding: 1rem 1.5rem; 
+  text-align: center;
+  font-size: 1.5rem; 
+}
+
+.feedback-table th {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 1.5rem; 
+  font-weight: bold;
+}
+
+.feedback-table td {
+  border-top: 1px solid #e5e7eb;
+}
+
+.feedback-table tr:hover td {
+  background-color: #f1f5f9;
+  transition: background-color 0.3s ease;
+}
+
+.approve-btn,
+.delete-btn {
+  padding: 0.7rem 1.2rem; 
+  border: none;
+  border-radius: 8px; 
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.approve-btn {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: #fff;
+  margin-right: 1rem; 
+  margin-bottom: 1rem;
+}
+
+.delete-btn {
+  background: linear-gradient(90deg, #ef4444, #b91c1c);
+  color: #fff;
+}
+
+
+.approve-btn:hover {
+  background: linear-gradient(90deg, #16a34a, #15803d);
+  transform: scale(1.08); 
+}
+
+.delete-btn:hover {
+  background: linear-gradient(90deg, #b91c1c, #991b1b);
+  transform: scale(1.08);
+}
+
+.feedback-table td i {
+  font-size: 1.4rem; 
+}
+
+@media (max-width: 768px) {
+  .feedback-table th,
+  .feedback-table td {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+
+  .approve-btn,
+  .delete-btn {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+
+  .feedback-table td i {
+    font-size: 1.2rem;
+  }
+}
