@@ -14,8 +14,8 @@ router.get("/get", getFeedbacks);
 router.post("/add", createFeedback);
 
 // Admin routes (add auth middleware if you have one)
-router.get("/admin/feedbacks", getAllFeedbacksAdmin);
-router.put("/admin/feedbacks/:id/approve", approveFeedback);
-router.delete("/admin/feedbacks/:id", deleteFeedback);
+router.get("/admin/getall", getAllFeedbacksAdmin);
+router.put("/admin/:id/approve", approveFeedback);
+router.delete("/admin/delete/:id", deleteFeedback);
 
 export default router;
