@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../axios"; 
 import "./Feedback.css";
 import defaultImage from "../../assets/feedback.png";
 
@@ -18,13 +18,11 @@ const Feedback = () => {
 
   const fetchFeedbacks = async () => {
     try {
-      const res = await axios.get("/api/feedbacks");
-      // ensure it's an array
-      const data = Array.isArray(res.data) ? res.data : [];
-      setFeedbacks(data);
+      const res = await api.get("/feedbacks"); // use api instance
+      setFeedbacks(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching feedbacks:", err);
-      setFeedbacks([]); // fallback
+      setFeedbacks([]);
     }
   };
 
@@ -48,9 +46,7 @@ const Feedback = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/feedbacks", form, {
-        headers: { "Content-Type": "application/json" },
-      });
+      await api.post("/feedbacks", form); // use api instance
       setForm({ name: "", role: "", message: "", rating: 5 });
       setIsPopupOpen(false);
       fetchFeedbacks();
