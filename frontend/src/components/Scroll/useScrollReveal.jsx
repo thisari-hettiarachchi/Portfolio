@@ -32,9 +32,6 @@ export default function useScrollReveal() {
     srtop.reveal('.skills .heading', { delay: 200 });
     srtop.reveal('.skills .skill-row', { origin: 'left', delay: 200 });
 
-    // Contact
-    srtop.reveal('.contact .heading', { delay: 200 });
-    srtop.reveal('.contact .container, .contact .container .form-group', { delay: 400 });
 
     // Projects
     srtop.reveal('.projects .heading', { delay: 200 });
