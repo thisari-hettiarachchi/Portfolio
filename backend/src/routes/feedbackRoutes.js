@@ -6,6 +6,7 @@ import {
   approveFeedback,
   deleteFeedback,
 } from "../controller/feedbackController.js"; 
+import { verifyAdmin } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -13,9 +14,8 @@ const router = express.Router();
 router.get("/get", getFeedbacks);
 router.post("/add", createFeedback);
 
-// Admin routes (add auth middleware if you have one)
-router.get("/admin/getall", getAllFeedbacksAdmin);
-router.put("/admin/:id/approve", approveFeedback);
-router.delete("/admin/delete/:id", deleteFeedback);
+router.get("/admin/getall", verifyAdmin, getAllFeedbacksAdmin);
+router.put("/admin/:id/approve", verifyAdmin, approveFeedback);
+router.delete("/admin/delete/:id", verifyAdmin, deleteFeedback);
 
 export default router;

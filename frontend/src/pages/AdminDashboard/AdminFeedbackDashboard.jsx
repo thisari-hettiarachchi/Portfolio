@@ -1,12 +1,20 @@
 // AdminFeedbackDashboard.jsx
 import React, { useEffect, useState } from "react";
 import "./AdminFeedback.css";
+import { useNavigate } from "react-router-dom";
 
 const AdminFeedbackDashboard = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const backendURL = import.meta.env.VITE_API_URL;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (!token) navigate("/admin/login");
+  }, [navigate]);
 
   // Fetch all feedbacks (admin)
   const fetchFeedbacks = async () => {

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import feedbackRoutes from "./routes/feedbackRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ app.get("/", (req, res) => {
 
 // Feedback routes
 app.use("/api/feedbacks", feedbackRoutes);
+
+app.use("/api/admin", adminRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {
