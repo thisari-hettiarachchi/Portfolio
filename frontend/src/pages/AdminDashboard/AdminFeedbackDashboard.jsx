@@ -1,7 +1,5 @@
-// AdminFeedbackDashboard.jsx
 import React, { useEffect, useState } from "react";
 import "./AdminFeedback.css";
-import { useNavigate } from "react-router-dom";
 
 const AdminFeedbackDashboard = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -9,24 +7,26 @@ const AdminFeedbackDashboard = () => {
 
   const backendURL = import.meta.env.VITE_API_URL;
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem("adminToken");
-    if (!token) navigate("/admin/login");
-  }, [navigate]);
-
-  // Fetch all feedbacks (admin)
+  // Fetch all feedbacks (approved & unapproved)
   const fetchFeedbacks = async () => {
     setLoading(true);
     try {
+      const token = localStorage.getItem("adminToken"); // or sessionStorage
+      
       const res = await fetch(`${backendURL}/api/feedbacks/admin/getall`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
         credentials: "include",
       });
+
+      if (!res.ok) throw new Error("Failed to fetch feedbacks");
+
       const data = await res.json();
+      console.log("Fetched feedbacks:", data);
       setFeedbacks(Array.isArray(data) ? data : []);
     } catch (err) {
-      console.error("Error fetching feedbacks:", err);
+      console.error(err);
       setFeedbacks([]);
     } finally {
       setLoading(false);
@@ -37,17 +37,44 @@ const AdminFeedbackDashboard = () => {
     fetchFeedbacks();
   }, []);
 
-  // Approve feedback
-  const handleApprove = async (id) => {
+  // Toggle approve/unapprove
+  const handleToggleApprove = async (id, approved) => {
     try {
-      const res = await fetch(`${backendURL}/api/feedbacks/admin/${id}/approve`, {
+      const token = localStorage.getItem("adminToken");
+      if (!token) {
+        alert("Session expired. Please login again.");
+        return;
+      }
+
+      // Optimistically update frontend
+      setFeedbacks(prev =>
+        prev.map(fb =>
+          fb._id === id ? { ...fb, approved: !approved } : fb
+        )
+      );
+
+      const action = approved ? "unapprove" : "approve";
+
+      const res = await fetch(`${backendURL}/api/feedbacks/admin/${id}/${action}`, {
         method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
         credentials: "include",
       });
-      if (!res.ok) throw new Error("Failed to approve feedback");
-      fetchFeedbacks();
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => null);
+        throw new Error(errData?.message || "Failed to update feedback status");
+      }
     } catch (err) {
       alert(err.message);
+      // Revert frontend change if backend fails
+      setFeedbacks(prev =>
+        prev.map(fb =>
+          fb._id === id ? { ...fb, approved: approved } : fb
+        )
+      );
     }
   };
 
@@ -56,12 +83,27 @@ const AdminFeedbackDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this feedback?")) return;
 
     try {
+      const token = localStorage.getItem("adminToken");
+      if (!token) {
+        alert("Session expired. Please login again.");
+        return;
+      }
+
       const res = await fetch(`${backendURL}/api/feedbacks/admin/delete/${id}`, {
         method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
         credentials: "include",
       });
-      if (!res.ok) throw new Error("Failed to delete feedback");
-      fetchFeedbacks();
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => null);
+        throw new Error(errData?.message || "Failed to delete feedback");
+      }
+
+      // Remove from frontend
+      setFeedbacks(prev => prev.filter(fb => fb._id !== id));
     } catch (err) {
       alert(err.message);
     }
@@ -97,14 +139,12 @@ const AdminFeedbackDashboard = () => {
                   <td>{fb.rating}</td>
                   <td>{fb.approved ? "✅" : "❌"}</td>
                   <td>
-                    {!fb.approved && (
-                      <button
-                        className="approve-btn"
-                        onClick={() => handleApprove(fb._id)}
-                      >
-                        Approve
-                      </button>
-                    )}
+                    <button
+                      className={fb.approved ? "unapprove-btn" : "approve-btn"}
+                      onClick={() => handleToggleApprove(fb._id, fb.approved)}
+                    >
+                      {fb.approved ? "Unapprove" : "Approve"}
+                    </button>
                     <button
                       className="delete-btn"
                       onClick={() => handleDelete(fb._id)}

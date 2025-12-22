@@ -10,6 +10,7 @@ import Contact from "./pages/Contact/Contact";
 import Footer from "./pages/Footer/Footer";
 import Service from "./pages/Service/Service";
 import Feedback from "./pages/Feedback/Feedback";
+import AdminLogin from "./pages/AdminDashboard/AdminLogin";
 import AdminFeedbackDashboard from "./pages/AdminDashboard/AdminFeedbackDashboard"; // <-- import dashboard
 import 'boxicons/css/boxicons.min.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -101,6 +102,7 @@ const App = () => {
           />
 
           {/* Admin feedback dashboard */}
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/feedbacks" element={<AdminFeedbackDashboard />} />
         </Routes>
       </Router>
