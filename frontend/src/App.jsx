@@ -15,7 +15,6 @@ import 'boxicons/css/boxicons.min.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Helmet } from "react-helmet";
-import AdminLogin from "./pages/AdminLogin/AdminLogin";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
