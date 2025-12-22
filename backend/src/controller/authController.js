@@ -1,9 +1,8 @@
 import jwt from "jsonwebtoken";
 
-// Hardcoded admin credentials (you can move this to a database later)
 const ADMIN_CREDENTIALS = {
   username: "admin",
-  password: "admin123", // Change this to a strong password
+  password: "admin123", 
 };
 
 export const adminLogin = (req, res) => {
@@ -18,7 +17,6 @@ export const adminLogin = (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Create JWT token
     const token = jwt.sign(
       { username, role: "admin" },
       process.env.JWT_SECRET,

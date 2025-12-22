@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
@@ -10,6 +10,13 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   const backendURL = import.meta.env.VITE_API_URL;
 
+  useEffect(() => {
+    const token = sessionStorage.getItem("adminToken");
+    if (token) {
+      navigate("/admin/feedbacks", { replace: true });
+    }
+  }, [navigate]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -18,9 +25,7 @@ const AdminLogin = () => {
     try {
       const res = await fetch(`${backendURL}/api/auth/login`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
         credentials: "include",
       });
@@ -31,12 +36,10 @@ const AdminLogin = () => {
       }
 
       const data = await res.json();
-      
-      // Store token in localStorage
-      localStorage.setItem("adminToken", data.token);
-      localStorage.setItem("adminUser", JSON.stringify(data.user));
 
-      // Redirect to dashboard
+      sessionStorage.setItem("adminToken", data.token);
+      sessionStorage.setItem("adminUser", JSON.stringify(data.user));
+
       navigate("/admin/feedbacks");
     } catch (err) {
       setError(err.message);
@@ -50,7 +53,7 @@ const AdminLogin = () => {
     <div className="admin-login">
       <div className="login-container">
         <h2>Admin Login</h2>
-        
+
         {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleLogin}>
@@ -85,9 +88,6 @@ const AdminLogin = () => {
           </button>
         </form>
 
-        <p className="demo-creds">
-          Demo: username: <strong>admin</strong> | password: <strong>admin123</strong>
-        </p>
       </div>
     </div>
   );

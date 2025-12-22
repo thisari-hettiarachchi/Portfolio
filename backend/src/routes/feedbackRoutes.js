@@ -15,7 +15,7 @@ const router = express.Router();
 router.get("/get", getFeedbacks);
 router.post("/add", createFeedback);
 
-// Protected admin routes
+// Admin
 router.get("/admin/getall", verifyAdmin, getAllFeedbacksAdmin);
 router.put("/admin/:id/approve", verifyAdmin, approveFeedback);
 router.put("/admin/:id/unapprove", verifyAdmin, unapproveFeedback);

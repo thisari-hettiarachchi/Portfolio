@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AdminFeedback.css";
 
 const AdminFeedbackDashboard = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   const backendURL = import.meta.env.VITE_API_URL;
 
-  // Fetch all feedbacks (approved & unapproved)
   const fetchFeedbacks = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem("adminToken"); // or sessionStorage
-      
+      const token = sessionStorage.getItem("adminToken");
+      if (!token) {
+        navigate("/admin/login", { replace: true });
+        return;
+      }
+
       const res = await fetch(`${backendURL}/api/feedbacks/admin/getall`, {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
+        headers: { "Authorization": `Bearer ${token}` },
         credentials: "include",
       });
+
+      if (res.status === 401) {
+        sessionStorage.clear();
+        navigate("/admin/login", { replace: true });
+        return;
+      }
 
       if (!res.ok) throw new Error("Failed to fetch feedbacks");
 
       const data = await res.json();
-      console.log("Fetched feedbacks:", data);
       setFeedbacks(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error(err);
@@ -37,29 +44,24 @@ const AdminFeedbackDashboard = () => {
     fetchFeedbacks();
   }, []);
 
-  // Toggle approve/unapprove
   const handleToggleApprove = async (id, approved) => {
     try {
-      const token = localStorage.getItem("adminToken");
+      const token = sessionStorage.getItem("adminToken");
       if (!token) {
         alert("Session expired. Please login again.");
+        navigate("/admin/login", { replace: true });
         return;
       }
 
-      // Optimistically update frontend
       setFeedbacks(prev =>
-        prev.map(fb =>
-          fb._id === id ? { ...fb, approved: !approved } : fb
-        )
+        prev.map(fb => (fb._id === id ? { ...fb, approved: !approved } : fb))
       );
 
       const action = approved ? "unapprove" : "approve";
 
       const res = await fetch(`${backendURL}/api/feedbacks/admin/${id}/${action}`, {
         method: "PUT",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
+        headers: { "Authorization": `Bearer ${token}` },
         credentials: "include",
       });
 
@@ -69,31 +71,26 @@ const AdminFeedbackDashboard = () => {
       }
     } catch (err) {
       alert(err.message);
-      // Revert frontend change if backend fails
       setFeedbacks(prev =>
-        prev.map(fb =>
-          fb._id === id ? { ...fb, approved: approved } : fb
-        )
+        prev.map(fb => (fb._id === id ? { ...fb, approved: approved } : fb))
       );
     }
   };
 
-  // Delete feedback
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this feedback?")) return;
 
     try {
-      const token = localStorage.getItem("adminToken");
+      const token = sessionStorage.getItem("adminToken");
       if (!token) {
         alert("Session expired. Please login again.");
+        navigate("/admin/login", { replace: true });
         return;
       }
 
       const res = await fetch(`${backendURL}/api/feedbacks/admin/delete/${id}`, {
         method: "DELETE",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
+        headers: { "Authorization": `Bearer ${token}` },
         credentials: "include",
       });
 
@@ -102,7 +99,6 @@ const AdminFeedbackDashboard = () => {
         throw new Error(errData?.message || "Failed to delete feedback");
       }
 
-      // Remove from frontend
       setFeedbacks(prev => prev.filter(fb => fb._id !== id));
     } catch (err) {
       alert(err.message);
@@ -131,7 +127,7 @@ const AdminFeedbackDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {feedbacks.map((fb) => (
+              {feedbacks.map(fb => (
                 <tr key={fb._id}>
                   <td>{fb.name}</td>
                   <td>{fb.role}</td>
