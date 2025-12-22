@@ -103,7 +103,6 @@ const App = () => {
 
           {/* Admin feedback dashboard */}
           <Route path="/admin/feedbacks" element={<AdminFeedbackDashboard />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
         </Routes>
       </Router>
     </ThemeProvider>
