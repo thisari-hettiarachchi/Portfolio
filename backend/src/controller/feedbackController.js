@@ -10,14 +10,13 @@ export const getFeedbacks = async (req, res) => {
   }
 };
 
-// POST new feedback (default approved: false)
+// POST new feedback
 export const createFeedback = async (req, res) => {
   try {
     const { name, role, message, rating } = req.body;
     if (!name || !role || !message || !rating) {
       return res.status(400).json({ error: "All fields are required" });
     }
-
     const feedback = new Feedback({ name, role, message, rating });
     const savedFeedback = await feedback.save();
     res.status(201).json(savedFeedback);
@@ -26,7 +25,7 @@ export const createFeedback = async (req, res) => {
   }
 };
 
-// Admin: GET all feedbacks (approved & unapproved)
+// Admin: GET all feedbacks
 export const getAllFeedbacksAdmin = async (req, res) => {
   try {
     const feedbacks = await Feedback.find().sort({ createdAt: -1 });
@@ -36,15 +35,11 @@ export const getAllFeedbacksAdmin = async (req, res) => {
   }
 };
 
-// Admin: Approve a feedback
+// Admin: Approve feedback
 export const approveFeedback = async (req, res) => {
   try {
     const { id } = req.params;
-    const feedback = await Feedback.findByIdAndUpdate(
-      id,
-      { approved: true },
-      { new: true }
-    );
+    const feedback = await Feedback.findByIdAndUpdate(id, { approved: true }, { new: true });
     if (!feedback) return res.status(404).json({ error: "Feedback not found" });
     res.status(200).json(feedback);
   } catch (error) {
@@ -52,7 +47,19 @@ export const approveFeedback = async (req, res) => {
   }
 };
 
-// Admin: Delete a feedback
+// Admin: Unapprove feedback
+export const unapproveFeedback = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const feedback = await Feedback.findByIdAndUpdate(id, { approved: false }, { new: true });
+    if (!feedback) return res.status(404).json({ error: "Feedback not found" });
+    res.status(200).json(feedback);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to unapprove feedback" });
+  }
+};
+
+// Admin: Delete feedback
 export const deleteFeedback = async (req, res) => {
   try {
     const { id } = req.params;

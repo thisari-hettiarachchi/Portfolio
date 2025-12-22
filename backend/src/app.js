@@ -2,12 +2,12 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import feedbackRoutes from "./routes/feedbackRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
 const app = express();
 
-// CORS configuration
 const corsOptions = {
   origin: [
     process.env.CLIENT_URL,
@@ -26,6 +26,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+// Auth routes
+app.use("/api/auth", authRoutes);
 
 // Feedback routes
 app.use("/api/feedbacks", feedbackRoutes);

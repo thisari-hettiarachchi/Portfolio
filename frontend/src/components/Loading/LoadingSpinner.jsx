@@ -71,7 +71,7 @@ const LoadingSpinner = ({ onFinish }) => {
           <div className="progress-text">{progress}%</div>
         </div>
 
-        <p className="loading-text">
+        <p className="load-text">
           just setting things up <br /> crafting pixels into experiences.
         </p>
       </div>
