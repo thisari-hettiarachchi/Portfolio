@@ -8,7 +8,9 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const backendURL = import.meta.env.VITE_API_URL;
+  const backendURL = window.location.hostname === 'localhost' 
+    ? import.meta.env.VITE_API_URL 
+    : import.meta.env.VITE_DEPLOYED_API_URL;
 
   useEffect(() => {
     const token = sessionStorage.getItem("adminToken");
@@ -27,8 +29,9 @@ const AdminLogin = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
-        credentials: "include",
+        credentials: "include", 
       });
+
 
       if (!res.ok) {
         const errData = await res.json();

@@ -6,7 +6,9 @@ const AdminFeedbackDashboard = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const backendURL = import.meta.env.VITE_API_URL;
+  const backendURL = window.location.hostname === 'localhost' 
+    ? import.meta.env.VITE_API_URL 
+    : import.meta.env.VITE_DEPLOYED_API_URL;
 
   const fetchFeedbacks = async () => {
     setLoading(true);

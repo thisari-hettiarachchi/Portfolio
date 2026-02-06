@@ -14,15 +14,16 @@ const Feedback = () => {
     message: "",
     rating: 0,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const backendURL = import.meta.env.VITE_API_URL;
+  const backendURL = window.location.hostname === 'localhost' 
+    ? import.meta.env.VITE_API_URL 
+    : import.meta.env.VITE_DEPLOYED_API_URL;
 
   // Fetch feedbacks
   const fetchFeedbacks = async () => {
     try {
-      const res = await fetch(`${backendURL}/api/feedbacks/get`, {
-        credentials: "include",
-      });
+      const res = await fetch(`${backendURL}/api/feedbacks/get`);
       const data = await res.json();
       setFeedbacks(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -58,6 +59,7 @@ const Feedback = () => {
   // Submit feedback
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const res = await fetch(`${backendURL}/api/feedbacks/add`, {
         method: "POST",
@@ -79,6 +81,8 @@ const Feedback = () => {
       fetchFeedbacks();
     } catch (err) {
       alert(err.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -210,8 +214,12 @@ const Feedback = () => {
                 </div>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Submit
+              <button 
+                type="submit" 
+                className="submit-btn" 
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>
