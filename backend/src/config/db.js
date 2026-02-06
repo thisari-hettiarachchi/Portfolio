@@ -10,7 +10,14 @@ const connectDB = async () => {
   }
 
   try {
-    const db = await mongoose.connect(process.env.MONGO_URI, {
+    // Support both local .env (MONGO_URI) and Vercel/Mongo Atlas default (MONGODB_URI)
+    const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
+
+    if (!mongoUri) {
+      throw new Error("Mongo connection string is missing (set MONGO_URI or MONGODB_URI)");
+    }
+
+    const db = await mongoose.connect(mongoUri, {
       bufferCommands: false,
     });
     isConnected = db.connections[0].readyState === 1;

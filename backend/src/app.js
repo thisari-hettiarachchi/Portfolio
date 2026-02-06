@@ -15,7 +15,8 @@ const allowedOrigins = [
   "http://localhost:5174",
   process.env.CLIENT_URL,
   process.env.DEPLOYED_CLIENT_URL,
-  "https://thisari-hettiarachchi.vercel.app", // Your deployed frontend
+  "https://react-portfolio-oqqc.vercel.app",
+  "https://thisari-hettiarachchi.vercel.app", 
 ].filter(Boolean);
 
 console.log("Allowed origins:", allowedOrigins);
