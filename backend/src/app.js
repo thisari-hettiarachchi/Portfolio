@@ -10,28 +10,14 @@ const app = express();
 
 // Allowed origins for frontend
 const allowedOrigins = [
-  process.env.CLIENT_URL || "http://localhost:5173",
-  process.env.DEPLOYED_CLIENT_URL || "https://thisari-hettiarachchi.vercel.app"
-];
+  process.env.CLIENT_URL,          // localhost frontend
+  process.env.DEPLOYED_CLIENT_URL, // deployed frontend
+].filter(Boolean);
 
 // CORS middleware
 app.use(cors({
-  origin: function(origin, callback) {
-    // allow requests with no origin
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true,
-}));
-
-// Handle preflight requests for all routes
-app.options("*", cors({
   origin: allowedOrigins,
-  credentials: true,
+  credentials: true, // needed for admin login cookies/auth headers
 }));
 
 app.use(express.json());
