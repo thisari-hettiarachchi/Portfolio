@@ -22,9 +22,6 @@ app.use(cors({
 
 app.use(express.json());
 
-// Handle preflight (OPTIONS) requests globally
-app.options("*", cors({ origin: allowedOrigins, credentials: true }));
-
 // Test route
 app.get("/", (req, res) => res.send("API is running..."));
 
