@@ -15,12 +15,12 @@ const Feedback = () => {
     rating: 0,
   });
 
-  const backendURL = import.meta.env.VITE_API_URL;
+  const backendURL = import.meta.env.VITE_DEPLOYED_API_URL;
 
   // Fetch feedbacks
   const fetchFeedbacks = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/feedbacks/get`);
+      const res = await fetch(`${import.meta.env.VITE_DEPLOYED_API_URL}/api/feedbacks/get`);
       const data = await res.json();
       setFeedbacks(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -57,7 +57,7 @@ const Feedback = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${backendURL}/api/feedbacks/add`, {
+      const res = await fetch(`${import.meta.env.VITE_DEPLOYED_API_URL}/api/feedbacks/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
