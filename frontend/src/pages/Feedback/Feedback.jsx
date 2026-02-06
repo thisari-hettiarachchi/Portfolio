@@ -20,9 +20,8 @@ const Feedback = () => {
   // Fetch feedbacks
   const fetchFeedbacks = async () => {
     try {
-      const res = await fetch(`${backendURL}/api/feedbacks/get`, {
-        credentials: "include",
-      });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/feedbacks/get`);
+      
       const data = await res.json();
       setFeedbacks(Array.isArray(data) ? data : []);
     } catch (err) {

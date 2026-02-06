@@ -8,23 +8,27 @@ dotenv.config();
 
 const app = express();
 
-// Only allow frontend origins (local + deployed)
-const corsOptions = {
-  origin: [
-    process.env.CLIENT_URL,           // localhost frontend
-    process.env.DEPLOYED_CLIENT_URL,  // deployed frontend
-  ].filter(Boolean),
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
+// Allowed origins for frontend
+const allowedOrigins = [
+  process.env.CLIENT_URL,          // localhost frontend
+  process.env.DEPLOYED_CLIENT_URL, // deployed frontend
+].filter(Boolean);
 
-app.use(cors(corsOptions));
+// CORS middleware
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true, // needed for admin login cookies/auth headers
+}));
+
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
+// Handle preflight (OPTIONS) requests globally
+app.options("*", cors({ origin: allowedOrigins, credentials: true }));
 
+// Test route
+app.get("/", (req, res) => res.send("API is running..."));
+
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/feedbacks", feedbackRoutes);
 
