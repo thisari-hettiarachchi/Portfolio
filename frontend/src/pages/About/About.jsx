@@ -116,7 +116,7 @@ const About = () => {
             </span>
           </p>
           <p>
-            I'm a second-year Software Engineering undergraduate at CINEC
+            I'm a third year Software Engineering undergraduate at CINEC
             Campus. With a strong foundation in information and communication
             technology, I have experience in web and mobile app development,
             complemented by my passion for creating innovative and user-friendly
