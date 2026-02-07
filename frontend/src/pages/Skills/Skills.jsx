@@ -19,6 +19,7 @@ import gitImg from "../../assets/git.png";
 import bootstrapImg from "../../assets/bootstrap.png";
 import nodeImg from "../../assets/nodejs.png";
 import zeplinImg from "../../assets/zeplin.png";
+import { firebase, flutter, vercel, express, next } from "../../assets";
 
 const skillImages = {
   html: htmlImg,
@@ -39,6 +40,11 @@ const skillImages = {
   bootstrap: bootstrapImg,
   nodejs: nodeImg,
   zeplin: zeplinImg,
+  firebase: firebase,
+  vercel: vercel,
+  express: express,
+  next: next,
+  flutter: flutter,
 };
 
 const skillCategories = [
@@ -48,9 +54,11 @@ const skillCategories = [
       { name: "HTML", class: "html", endValue: 90 },
       { name: "CSS", class: "css", endValue: 90 },
       { name: "JavaScript", class: "javascript", endValue: 50 },
-      { name: "React", class: "react", endValue: 30 },
+      { name: "React", class: "react", endValue: 50 },
       { name: "Tailwind CSS", class: "tailwind", endValue: 80 },
       { name: "Bootstrap", class: "bootstrap", endValue: 50 },
+      { name: "Next.js", class: "next", endValue: 30 },
+      { name: "Flutter", class: "flutter", endValue: 30 },
     ],
   },
   {
@@ -68,7 +76,9 @@ const skillCategories = [
       { name: "Java", class: "java", endValue: 30 },
       { name: "C++", class: "cpp", endValue: 50 },
       { name: "MySQL", class: "mysql", endValue: 80 },
-      { name: "Node.js", class: "nodejs", endValue: 30 }
+      { name: "Node.js", class: "nodejs", endValue: 30 },
+      { name: "Express.", class: "express", endValue: 30 },
+      { name: "Firebase", class: "firebase", endValue: 30 },
     ],
   },
   {
@@ -78,6 +88,7 @@ const skillCategories = [
       { name: "Git", class: "git", endValue: 50 },
       { name: "VS Code", class: "vscode", endValue: 80 },
       { name: "Postman", class: "postman", endValue: 30 },
+      { name: "Vercel", class: "vercel", endValue: 50 },
     ],
   },
 ];
