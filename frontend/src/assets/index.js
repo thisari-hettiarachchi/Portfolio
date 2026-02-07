@@ -18,7 +18,7 @@ import RedovenMP4 from "./Pizza.mp4";
 import YeshoMP4 from "./Yesho.mp4";
 import flutter from "./flutter.png";
 import next from "./next.png";
-import express from "./express.png";
+import express from "./expressjs.png";
 import firebase from "./firebase.png";
 import vercel from "./vercel.png";
 
