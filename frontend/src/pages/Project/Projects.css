@@ -142,6 +142,36 @@
   justify-self: center;
 }
 
+.project-badges {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.team-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: black;
+  background: rgba(46, 178, 211, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(3px);
+}
+
+.team-badge.team {
+  background: var(--primary);
+}
+
+.team-badge.solo {
+  background: var(--primary);
+}
+
 .project-card::before {
   content: '';
   position: absolute;
@@ -193,7 +223,8 @@
   line-height: 1.6;
 }
 
-.github-links {
+.github-links,
+.project-links {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -201,7 +232,8 @@
   margin-top: 1.5rem;
 }
 
-.github-link {
+.github-link,
+.project-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -217,7 +249,8 @@
   overflow: hidden;
 }
 
-.github-link::before {
+.github-link::before,
+.project-link::before {
   content: '';
   position: absolute;
   top: 0;
@@ -229,23 +262,40 @@
   z-index: -1;
 }
 
-.github-link:hover::before {
+.github-link:hover::before,
+.project-link:hover::before {
   left: 0;
 }
 
-.github-link:hover {
+.github-link:hover,
+.project-link:hover {
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(46, 178, 211, 0.3);
 }
 
-.github-link i {
+.github-link i,
+.project-link i {
   font-size: 1.5rem;
   transition: transform 0.3s ease;
 }
 
-.github-link:hover i {
+.github-link:hover i,
+.project-link:hover i {
   transform: scale(1.1);
+}
+
+.demo-link {
+  border-color: var(--primary);
+  color:var(--primary);
+}
+
+.demo-link::before {
+  background: var(--primary);
+}
+
+.demo-link:hover {
+  box-shadow: 0 6px 15px rgba(34, 197, 94, 0.3);
 }
 
 .arrow {
@@ -565,11 +615,13 @@
     font-size: 0.9rem;
   }
   
-  .github-links {
+  .github-links,
+  .project-links {
     gap: 0.6rem;
   }
   
-  .github-link {
+  .github-link,
+  .project-link {
     padding: 6px 12px;
     font-size: 0.8rem;
   }
@@ -616,12 +668,14 @@
     height: 140px;
   }
   
-  .github-links {
+  .github-links,
+  .project-links {
     flex-direction: column;
     align-items: center;
   }
   
-  .github-link {
+  .github-link,
+  .project-link {
     width: fit-content;
     min-width: 120px;
   }
