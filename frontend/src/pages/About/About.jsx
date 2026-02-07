@@ -13,7 +13,7 @@ const About = () => {
   const journey = [
     {
       id: 1,
-      degree: "Digital Graphic Designing Course",
+      degree: "Professional Certificate in Digital Graphic Designing",
       institution: "Informatics Institute of Technology (IIT)",
       location: "Colombo 04",
       period: "Present",
