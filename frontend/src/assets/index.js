@@ -16,9 +16,18 @@ import YeshoImg from "./Yesho.png";
 import SeatifyMP4 from "./Seatify.mp4";
 import RedovenMP4 from "./Pizza.mp4";
 import YeshoMP4 from "./Yesho.mp4";
-
+import flutter from "./flutter.png";
+import next from "./next.png";
+import express from "./express.png";
+import firebase from "./firebase.png";
+import vercel from "./vercel.png";
 
 export {
+    firebase,
+    vercel,
+    express,    
+    next,
+    flutter,
     CafeCloudImg,
     YumCraveImg,
     ShopMeImg,
