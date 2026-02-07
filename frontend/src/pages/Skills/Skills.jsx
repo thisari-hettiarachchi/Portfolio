@@ -19,7 +19,7 @@ import gitImg from "../../assets/git.png";
 import bootstrapImg from "../../assets/bootstrap.png";
 import nodeImg from "../../assets/nodejs.png";
 import zeplinImg from "../../assets/zeplin.png";
-import { firebase, flutter, vercel, express, next } from "../../assets";
+import { firebase, flutter, vercel, express, next, Netlify } from "../../assets";
 
 const skillImages = {
   html: htmlImg,
@@ -45,6 +45,7 @@ const skillImages = {
   express: express,
   next: next,
   flutter: flutter,
+  netlify: Netlify,
 };
 
 const skillCategories = [
@@ -89,6 +90,7 @@ const skillCategories = [
       { name: "VS Code", class: "vscode", endValue: 80 },
       { name: "Postman", class: "postman", endValue: 30 },
       { name: "Vercel", class: "vercel", endValue: 50 },
+      { name: "Netlify", class: "netlify", endValue: 30 },
     ],
   },
 ];

@@ -24,7 +24,10 @@ import vercel from "./vercel.png";
 import ShopZo from "./shopzo.png";
 import CareConnect from "./careconnect.png";
 import EventWalletImg from "./eventwallet.png";
+import Netlify from "./netlify.png";
+
 export {
+    Netlify,
     CareConnect,
     EventWalletImg,
     firebase,

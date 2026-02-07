@@ -219,6 +219,7 @@ const projectData = [
     description:
       "A fully responsive jewelry shop landing page. Mirrors the Figma design with smooth scrolling and minimal layout to highlight premium items.",
     toolsandlanguages: ["HTML", "Tailwind CSS"],
+    liveDemo: "https://aureajewel.netlify.app/",
     githubLinks: [
       {
         label: "Code",
