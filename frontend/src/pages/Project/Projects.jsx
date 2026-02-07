@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Projects.css";
 
 import {
-  YumCraveImg,
-  ShopMeImg,
+  ShopZo,
+  CareConnect,
   CafeCloudImg,
   ChatbotImg,
   AureaImg,
@@ -31,12 +31,51 @@ const projectData = [
     toolsandlanguages: [
       "nextjs",
       "tailwind css",
-      "nodemailler",
+      "nodemailer",
     ],
     githubLinks: [
       {
         label: "Code",
         url: "https://github.com/thisari-hettiarachchi/Yesho.git",
+      },
+    ],
+  },
+  {
+    title: "ShopZo - Multi-Vendor E-commerce Website",
+    category: "Web Apps",
+    image: ShopZo,
+    description:
+      "Enhancing a React-based multi-vendor e-commerce platform with separate customer  and vendor roles, enabling customers to browse products, add to cart  and place orders, while vendors manage their own listings.",
+    toolsandlanguages: [
+      "react js",
+      "tailwind css",
+      "express js",
+      "mongodb",
+    ],
+    githubLinks: [
+      {
+        label: "Code",
+        url: "https://github.com/thisari-hettiarachchi/ShopZo.git",
+      },
+    ],
+  },
+  {
+    title: "CareConnect – Doctor Appointment Booking Website",
+    category: "Web Apps",
+    image: CareConnect,
+    description:
+      "A doctor appointment system that allows patients to book doctors, doctors to manage schedules, and admins to manage the platform.",
+    toolsandlanguages: [
+      "html",
+      "css",
+      "javascript",
+      "php",
+      "mysql",
+    ],
+    githubLinks: [
+      {
+        label: "Code",
+        url: "https://github.com/thisari-hettiarachchi/CareConnect.git",
       },
     ],
   },
@@ -58,7 +97,30 @@ const projectData = [
     githubLinks: [
       {
         label: "code",
-        url: "https://github.com/DH-0216/pizza-order-delivery-system.git",
+        url: "https://github.com/thisari-hettiarachchi/pizza-order-delivery-system.git",
+      },
+    ],
+  },
+  {
+    title: "Seatify - Movie Ticket Booking System",
+    category: "Web Apps",
+    image: SeatifyImg,
+    video: SeatifyMP4,
+    description:
+      "An online movie booking app where users can browse shows, view seat layouts, and purchase tickets with ease. Responsive UI with streamlined booking flow.",
+    toolsandlanguages: [
+      "nextjs",
+      "tailwind css",
+      "express",
+      "mongodb",
+      "stripe",
+      "clerk",
+      "ingest",
+    ],
+    githubLinks: [
+      {
+        label: "Code",
+        url: "https://github.com/thisari-hettiarachchi/Seatify-Movie-Ticket-Booking-System.git",
       },
     ],
   },
@@ -147,29 +209,6 @@ const projectData = [
     ],
   },
   {
-    title: "Seatify - Movie Ticket Booking System",
-    category: "Web Apps",
-    image: SeatifyImg,
-    video: SeatifyMP4,
-    description:
-      "An online movie booking app where users can browse shows, view seat layouts, and purchase tickets with ease. Responsive UI with streamlined booking flow.",
-    toolsandlanguages: [
-      "nextjs",
-      "tailwind css",
-      "express",
-      "mongodb",
-      "stripe",
-      "clerk",
-      "ingest",
-    ],
-    githubLinks: [
-      {
-        label: "Code",
-        url: "https://github.com/DH-0216/Seatify-Movie-Ticket-Booking-System.git",
-      },
-    ],
-  },
-  {
     title: "TurboTech - Gaming Gear Website Landing Page",
     category: "UI Design",
     image: TurboTechUI,
@@ -197,35 +236,6 @@ const projectData = [
       },
     ],
   },
-  {
-    title: "YumCrave - Food Ordering Website",
-    category: "Web Apps",
-    image: YumCraveImg,
-    description:
-      "A responsive food ordering platform allowing users to explore menus, add to cart, and place orders with a smooth user interface.",
-    toolsandlanguages: ["HTML", "CSS", "JavaScript"],
-    githubLinks: [
-      {
-        label: "Code",
-        url: "https://github.com/thisari-hettiarachchi/YumCrave.git",
-      },
-    ],
-  },
-  {
-    title: "ShopMe - E-commerce Shoe Store",
-    category: "Web Apps",
-    image: ShopMeImg,
-    description:
-      "A sleek e-commerce website for browsing, filtering, and purchasing footwear online. Features dynamic product listings and an engaging UI.",
-    toolsandlanguages: ["HTML", "CSS", "JavaScript"],
-    githubLinks: [
-      {
-        label: "Code",
-        url: "https://github.com/thisari-hettiarachchi/ShopMe.git",
-      },
-    ],
-  },
-  
 ];
 
 const categories = ["Web Apps", "UI Design","Desktop Application"];

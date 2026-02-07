@@ -8,7 +8,7 @@ import DchatbotImg from "./Dchatbot.jpg";
 import RedovenImg from "./Red_Oven.jpg";
 import AureaNewImg from "./AureaNew.png";
 import SpaceFinderImg from "./SpaceFinder.png";
-import SeatifyImg from "./Seatify.jpg";
+import SeatifyImg from "./Seatify.png";
 import AutoMartLogo from "./auto mart.png";
 import TurboTechWeb from "./TurboTech-Web.png";
 import TurboTechUI from "./TurboTech.png";
@@ -21,9 +21,13 @@ import next from "./next.png";
 import express from "./expressjs.png";
 import firebase from "./firebase.png";
 import vercel from "./vercel.png";
+import ShopZo from "./shopzo.png";
+import CareConnect from "./careconnect.png";
 
 export {
+    CareConnect,
     firebase,
+    ShopZo,
     vercel,
     express,    
     next,
