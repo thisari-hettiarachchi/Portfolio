@@ -9,7 +9,7 @@ import Project from "./pages/Project/Projects";
 import Contact from "./pages/Contact/Contact";
 import Footer from "./pages/Footer/Footer";
 import Service from "./pages/Service/Service";
-{/*import Feedback from "./pages/Feedback/Feedback";*/}
+import Feedback from "./pages/Feedback/Feedback";
 import AdminLogin from "./pages/AdminDashboard/AdminLogin";
 import AdminFeedbackDashboard from "./pages/AdminDashboard/AdminFeedbackDashboard"; 
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -80,7 +80,7 @@ const App = () => {
                 <Skills />
                 <Project />
                 <Service />
-                {/*<Feedback />*/}
+                <Feedback />
                 <Contact />
                 <Footer />
 
