@@ -27,7 +27,7 @@ import EventWalletImg from "./eventwallet.png";
 import Netlify from "./netlify.png";
 import Roy from "./roy.png";
 import RoyMP4 from "./roy.mp4";
-import TurboTechMP4 from "./TurboTech.mp4";
+import TurboTechMP4 from "./turbotech.mp4";
 
 export {
     TurboTechMP4,
