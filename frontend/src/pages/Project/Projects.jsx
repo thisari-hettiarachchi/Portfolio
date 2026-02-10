@@ -18,7 +18,9 @@ import {
   SeatifyMP4,
   RedovenMP4,
   YeshoMP4,
-  EventWalletImg
+  EventWalletImg,
+  Roy,
+  RoyMP4,
 } from "../../assets/index.js";
 
 const projectData = [
@@ -27,7 +29,7 @@ const projectData = [
     category: "Web Apps",
     image: YeshoImg,
     video: YeshoMP4,
-    teamType: "Group",
+    teamType: "Group - completed",
     description:
       "The official website for Yesho Intelligence (Pvt) Ltd., showcasing company details, services, team, and updates. Designed with a clean, responsive interface for seamless user experience across devices.",
     toolsandlanguages: [
@@ -44,10 +46,35 @@ const projectData = [
     ],
   },
   {
+    title: "AI-Assisted Interactive 3D Gem Exploration and Jewelry Purchasing Web and Mobile-Based Platform for Roy Brothers",
+    category: "Web Apps",
+    image:Roy,
+    video: RoyMP4,
+    teamType: "Group - ongoing",
+    description:
+      "Ongoing 3rd-year group project for Roy Brothers featuring an AI-powered interactive 3D gemstone and jewelry exploration platform. ",
+    toolsandlanguages: [
+      "nextjs",
+      "tailwind css",
+      "expressjs",
+      "fastapi",
+      "mongodb",
+      "threejs",
+      "pytorch",
+    ],
+    liveDemo: "https://roy-brothers-platform.vercel.app",
+    githubLinks: [
+      {
+        label: "Code",
+        url: "https://github.com/thisari-hettiarachchi/roy-brothers-platform.git",
+      },
+    ],
+  },
+  {
     title: "ShopZo - Multi-Vendor E-commerce Website",
     category: "Web Apps",
     image: ShopZo,
-    teamType: "Individual",
+    teamType: "Individual - ongoing",
     description:
       "Enhancing a React-based multi-vendor e-commerce platform with separate customer  and vendor roles, enabling customers to browse products, add to cart  and place orders, while vendors manage their own listings.",
     toolsandlanguages: [
@@ -67,7 +94,7 @@ const projectData = [
     title: "CareConnect – Doctor Appointment Booking Website",
     category: "Web Apps",
     image: CareConnect,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "A doctor appointment system that allows patients to book doctors, doctors to manage schedules, and admins to manage the platform.",
     toolsandlanguages: [
@@ -89,7 +116,7 @@ const projectData = [
     category: "Web Apps",
     image: RedovenImg,
     video: RedovenMP4,
-    teamType: "Group",
+    teamType: "Group - completed",
     description:
       "A pizza delivery web app enabling users to place orders, customize pizzas, and track deliveries in real time. Includes admin features for menu and order management.",
     toolsandlanguages: [
@@ -113,7 +140,7 @@ const projectData = [
     category: "Web Apps",
     image: SeatifyImg,
     video: SeatifyMP4,
-    teamType: "Group",
+    teamType: "Group - completed",
     description:
       "An online movie booking app where users can browse shows, view seat layouts, and purchase tickets with ease. Responsive UI with streamlined booking flow.",
     toolsandlanguages: [
@@ -137,7 +164,7 @@ const projectData = [
     title: "EventWallet - Event and Budet Planning Mobile Application ",
     category: "Mobile Apps",
     image: EventWalletImg,
-    teamType: "Individual",
+    teamType: "Individual - ongoing",
     description:
       "Developing a Flutter-based mobile application where users can book service providers (hotels, photographers, etc.), and service providers can view, manage bookings, and handle event-related services.",
     toolsandlanguages: [
@@ -155,7 +182,7 @@ const projectData = [
     title: "Dialogue Based Chatbot",
     category: "Desktop Application",
     image: DchatbotImg,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "An educational chatbot desktop app designed to help students grasp core programming concepts through natural dialogue.",
     toolsandlanguages: ["Python", "Tkinter"],
@@ -170,7 +197,7 @@ const projectData = [
     title: "AI Chatbot",
     category: "Desktop Application",
     image: ChatbotImg,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "An AI-driven chatbot desktop app for handling basic user queries and enhancing support interaction. Utilizes rule-based logic to simulate a conversational experience.",
     toolsandlanguages: ["Python"],
@@ -185,7 +212,7 @@ const projectData = [
     title: "CafeCloud - Coffee Ordering System",
     category: "UI Design",
     image: CafeCloudImg,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "A UI/UX design for a coffee ordering app that enables users to browse beverages, customize orders, and streamline checkout.",
     toolsandlanguages: ["Figma"],
@@ -200,7 +227,7 @@ const projectData = [
     title: "Aurea - Jewelry Shop Landing Page",
     category: "UI Design",
     image: AureaImg,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "A visually elegant landing page UI for a jewelry store. Highlight products, testimonials, categories, and newsletter signup with a refined aesthetic.",
     toolsandlanguages: ["Figma"],
@@ -215,7 +242,7 @@ const projectData = [
     title: "Aurea - Jewelry Shop Landing Page",
     category: "Web Apps",
     image: AureaNewImg,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "A fully responsive jewelry shop landing page. Mirrors the Figma design with smooth scrolling and minimal layout to highlight premium items.",
     toolsandlanguages: ["HTML", "Tailwind CSS"],
@@ -231,7 +258,7 @@ const projectData = [
     title: "SpaceFinder - Parking Spaces Finder App",
     category: "UI Design",
     image: SpaceFinderImg,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "A UI/UX design concept for a smart parking app. Allows users to locate nearby parking, check availability, reserve slots, and navigate to locations in real-time.",
     toolsandlanguages: ["Figma"],
@@ -246,7 +273,7 @@ const projectData = [
     title: "TurboTech - Gaming Gear Website Landing Page",
     category: "UI Design",
     image: TurboTechUI,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "TurboTech, a high-fidelity UI design and functional prototype for a gaming gear eCommerce website.",
     toolsandlanguages: ["Figma"],
@@ -261,7 +288,7 @@ const projectData = [
     title: "TurboTech - Gaming Gear Website Landing Page",
     category: "Web Apps",
     image: TurboTechWeb,
-    teamType: "Individual",
+    teamType: "Individual - completed",
     description:
       "TurboTech is a concept brand focused on high-performance gaming gear and accessories.",
     toolsandlanguages: ["HTML", "Tailwind CSS"],
