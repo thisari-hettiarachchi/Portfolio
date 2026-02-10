@@ -21,6 +21,7 @@ import {
   EventWalletImg,
   Roy,
   RoyMP4,
+  TurboTechMP4,
 } from "../../assets/index.js";
 
 const projectData = [
@@ -288,6 +289,7 @@ const projectData = [
     title: "TurboTech - Gaming Gear Website Landing Page",
     category: "Web Apps",
     image: TurboTechWeb,
+    video: TurboTechMP4,
     teamType: "Individual - completed",
     description:
       "TurboTech is a concept brand focused on high-performance gaming gear and accessories.",
