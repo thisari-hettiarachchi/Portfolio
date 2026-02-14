@@ -199,68 +199,11 @@ const Skills = () => {
       </h2>
 
       <div className="skill-container" ref={skillRef}>
-        <div className="skill-row">
-          {[skillCategories[0], skillCategories[2]].map((category, idx) => (
+        {skillCategories.map((category, idx) => (
+          <div className="skill-row" key={idx}>
             <div
-              key={idx}
               className="skill-category"
-              ref={(el) => (categoryRefs.current[idx * 2] = el)}
-            >
-              <h3 className="category-title">{category.title}</h3>
-              <div className="row">
-                {category.skills.map((skill, skillIndex) => (
-                  <div className="col-6 col-sm-4 col-md-2" key={skill.class}>
-                    <div
-                      className="progress-card"
-                      data-skill-id={`${skill.class}-${skillIndex}`}
-                      style={{
-                        animationDelay: `${skillIndex * 0.1}s`,
-                      }}
-                    >
-                      <div
-                        className={`circular-progress ${skill.class}`}
-                        style={{
-                          background: `conic-gradient(#2EB2D3 ${
-                            (progress[skill.class] || 0) * 3.6
-                          }deg, transparent 0deg)`,
-                        }}
-                      >
-
-                        <img
-                          src={skillImages[skill.class]}
-                          alt={skill.name}
-                          style={{
-                            position: "absolute",
-                            top: "50%",
-                            left: "50%",
-                            width: "40px",
-                            height: "40px",
-                            transform: "translate(-50%, -50%)",
-                            pointerEvents: "none",
-                            userSelect: "none",
-                          }}
-                          draggable={false}
-                        />
-                        <span className="progress-value">
-                          {progress[skill.class] || 0}%
-                        </span>
-                      </div>
-                      <br />
-                      <span className="text">{skill.name}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="skill-row">
-          {[skillCategories[1], skillCategories[3]].map((category, idx) => (
-            <div
-              key={idx}
-              className="skill-category"
-              ref={(el) => (categoryRefs.current[idx * 2 + 1] = el)}
+              ref={(el) => (categoryRefs.current[idx] = el)}
             >
               <h3 className="category-title">{category.title}</h3>
               <div className="row">
@@ -307,8 +250,8 @@ const Skills = () => {
                 ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
