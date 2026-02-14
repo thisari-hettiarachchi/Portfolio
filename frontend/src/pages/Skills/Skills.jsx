@@ -19,7 +19,7 @@ import gitImg from "../../assets/git.png";
 import bootstrapImg from "../../assets/bootstrap.png";
 import nodeImg from "../../assets/nodejs.png";
 import zeplinImg from "../../assets/zeplin.png";
-import { firebase, flutter, vercel, express, next, Netlify } from "../../assets";
+import { firebase, flutter, vercel, express, next, Netlify, mongodb } from "../../assets";
 
 const skillImages = {
   html: htmlImg,
@@ -46,8 +46,8 @@ const skillImages = {
   next: next,
   flutter: flutter,
   netlify: Netlify,
+  mongodb: mongodb,
 };
-
 const skillCategories = [
   {
     title: "Frontend Development",
@@ -56,37 +56,48 @@ const skillCategories = [
       { name: "CSS", class: "css", endValue: 90 },
       { name: "JavaScript", class: "javascript", endValue: 50 },
       { name: "React", class: "react", endValue: 50 },
+      { name: "Next.js", class: "next", endValue: 30 },
       { name: "Tailwind CSS", class: "tailwind", endValue: 80 },
       { name: "Bootstrap", class: "bootstrap", endValue: 50 },
-      { name: "Next.js", class: "next", endValue: 30 },
-      { name: "Flutter", class: "flutter", endValue: 30 },
+    ],
+  },
+  {
+    title: "Backend & Databases",
+    skills: [
+      { name: "Node.js", class: "nodejs", endValue: 30 },
+      { name: "Express.js", class: "express", endValue: 30 },
+      { name: "PHP", class: "php", endValue: 50 },
+      { name: "MySQL", class: "mysql", endValue: 80 },
+      { name: "MongoDB", class: "mongodb", endValue: 40 },
+      { name: "Firebase", class: "firebase", endValue: 30 },
+    ],
+  },
+  {
+    title: "Programming Languages",
+    skills: [
+      { name: "Java", class: "java", endValue: 30 },
+      { name: "Python", class: "python", endValue: 30 },
+      { name: "C++", class: "cpp", endValue: 50 },
     ],
   },
   {
     title: "UI/UX Design",
     skills: [
       { name: "Figma", class: "figma", endValue: 90 },
-      { name: "Zeplin", class: "zeplin", endValue: 40 }
+      { name: "Zeplin", class: "zeplin", endValue: 40 },
     ],
   },
   {
-    title: "Backend Development",
+    title: "Mobile Development",
     skills: [
-      { name: "PHP", class: "php", endValue: 50 },
-      { name: "Python", class: "python", endValue: 30 },
-      { name: "Java", class: "java", endValue: 30 },
-      { name: "C++", class: "cpp", endValue: 50 },
-      { name: "MySQL", class: "mysql", endValue: 80 },
-      { name: "Node.js", class: "nodejs", endValue: 30 },
-      { name: "Express.", class: "express", endValue: 30 },
-      { name: "Firebase", class: "firebase", endValue: 30 },
+      { name: "Flutter", class: "flutter", endValue: 30 },
     ],
   },
   {
     title: "Tools & Workflow",
     skills: [
-      { name: "GitHub", class: "github", endValue: 50 },
       { name: "Git", class: "git", endValue: 50 },
+      { name: "GitHub", class: "github", endValue: 50 },
       { name: "VS Code", class: "vscode", endValue: 80 },
       { name: "Postman", class: "postman", endValue: 30 },
       { name: "Vercel", class: "vercel", endValue: 50 },
@@ -94,6 +105,7 @@ const skillCategories = [
     ],
   },
 ];
+
 
 const Skills = () => {
   useScrollReveal();

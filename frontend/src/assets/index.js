@@ -28,8 +28,10 @@ import Netlify from "./netlify.png";
 import Roy from "./roy.png";
 import RoyMP4 from "./roy.mp4";
 import TurboTechMP4 from "./turbotech.mp4";
+import mongodb from "./mongodb.png";
 
 export {
+    mongodb,
     TurboTechMP4,
     RoyMP4,
     Roy,
