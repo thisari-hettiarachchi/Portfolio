@@ -19,7 +19,7 @@ import gitImg from "../../assets/git.png";
 import bootstrapImg from "../../assets/bootstrap.png";
 import nodeImg from "../../assets/nodejs.png";
 import zeplinImg from "../../assets/zeplin.png";
-import { firebase, flutter, vercel, express, next, Netlify } from "../../assets";
+import { firebase, flutter, vercel, express, next, Netlify, mongodb } from "../../assets";
 
 const skillImages = {
   html: htmlImg,
@@ -46,8 +46,8 @@ const skillImages = {
   next: next,
   flutter: flutter,
   netlify: Netlify,
+  mongodb: mongodb,
 };
-
 const skillCategories = [
   {
     title: "Frontend Development",
@@ -56,37 +56,48 @@ const skillCategories = [
       { name: "CSS", class: "css", endValue: 90 },
       { name: "JavaScript", class: "javascript", endValue: 50 },
       { name: "React", class: "react", endValue: 50 },
+      { name: "Next.js", class: "next", endValue: 30 },
       { name: "Tailwind CSS", class: "tailwind", endValue: 80 },
       { name: "Bootstrap", class: "bootstrap", endValue: 50 },
-      { name: "Next.js", class: "next", endValue: 30 },
-      { name: "Flutter", class: "flutter", endValue: 30 },
+    ],
+  },
+  {
+    title: "Backend & Databases",
+    skills: [
+      { name: "Node.js", class: "nodejs", endValue: 30 },
+      { name: "Express.js", class: "express", endValue: 30 },
+      { name: "PHP", class: "php", endValue: 50 },
+      { name: "MySQL", class: "mysql", endValue: 80 },
+      { name: "MongoDB", class: "mongodb", endValue: 40 },
+      { name: "Firebase", class: "firebase", endValue: 30 },
+    ],
+  },
+  {
+    title: "Programming Languages",
+    skills: [
+      { name: "Java", class: "java", endValue: 30 },
+      { name: "Python", class: "python", endValue: 30 },
+      { name: "C++", class: "cpp", endValue: 50 },
     ],
   },
   {
     title: "UI/UX Design",
     skills: [
       { name: "Figma", class: "figma", endValue: 90 },
-      { name: "Zeplin", class: "zeplin", endValue: 40 }
+      { name: "Zeplin", class: "zeplin", endValue: 40 },
     ],
   },
   {
-    title: "Backend Development",
+    title: "Mobile Development",
     skills: [
-      { name: "PHP", class: "php", endValue: 50 },
-      { name: "Python", class: "python", endValue: 30 },
-      { name: "Java", class: "java", endValue: 30 },
-      { name: "C++", class: "cpp", endValue: 50 },
-      { name: "MySQL", class: "mysql", endValue: 80 },
-      { name: "Node.js", class: "nodejs", endValue: 30 },
-      { name: "Express.", class: "express", endValue: 30 },
-      { name: "Firebase", class: "firebase", endValue: 30 },
+      { name: "Flutter", class: "flutter", endValue: 30 },
     ],
   },
   {
     title: "Tools & Workflow",
     skills: [
-      { name: "GitHub", class: "github", endValue: 50 },
       { name: "Git", class: "git", endValue: 50 },
+      { name: "GitHub", class: "github", endValue: 50 },
       { name: "VS Code", class: "vscode", endValue: 80 },
       { name: "Postman", class: "postman", endValue: 30 },
       { name: "Vercel", class: "vercel", endValue: 50 },
@@ -94,6 +105,7 @@ const skillCategories = [
     ],
   },
 ];
+
 
 const Skills = () => {
   useScrollReveal();
@@ -104,6 +116,7 @@ const Skills = () => {
   const skillRef = useRef(null);
   const headingRef = useRef(null);
   const categoryRefs = useRef([]);
+  const animatedCategories = useRef(new Set());
 
   useEffect(() => {
     const sectionObserver = new IntersectionObserver(
@@ -117,15 +130,6 @@ const Skills = () => {
               headingRef.current.classList.add("fade-in-up");
             }
           }, 200);
-
-          skillCategories.forEach((category, index) => {
-            setTimeout(() => {
-              animateProgress(category.skills);
-              if (categoryRefs.current[index]) {
-                categoryRefs.current[index].classList.add("slide-in-up");
-              }
-            }, 500 + index * 300);
-          });
 
           sectionObserver.disconnect();
         }
@@ -150,6 +154,29 @@ const Skills = () => {
 
     if (skillRef.current) sectionObserver.observe(skillRef.current);
 
+    const categoryObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.dataset.categoryIndex);
+            if (!animatedCategories.current.has(idx)) {
+              animatedCategories.current.add(idx);
+              animateProgress(skillCategories[idx].skills);
+              entry.target.classList.add("slide-in-up");
+            }
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    categoryRefs.current.forEach((ref, idx) => {
+      if (ref) {
+        ref.dataset.categoryIndex = idx;
+        categoryObserver.observe(ref);
+      }
+    });
+
     const skillCards = document.querySelectorAll(".progress-card");
     skillCards.forEach((card) => {
       cardObserver.observe(card);
@@ -157,6 +184,7 @@ const Skills = () => {
 
     return () => {
       sectionObserver.disconnect();
+      categoryObserver.disconnect();
       cardObserver.disconnect();
     };
   }, [isVisible, animatedCards]);
@@ -199,68 +227,12 @@ const Skills = () => {
       </h2>
 
       <div className="skill-container" ref={skillRef}>
-        <div className="skill-row">
-          {[skillCategories[0], skillCategories[2]].map((category, idx) => (
+        {skillCategories.map((category, idx) => (
+          <div className="skill-row" key={idx}>
             <div
-              key={idx}
               className="skill-category"
-              ref={(el) => (categoryRefs.current[idx * 2] = el)}
-            >
-              <h3 className="category-title">{category.title}</h3>
-              <div className="row">
-                {category.skills.map((skill, skillIndex) => (
-                  <div className="col-6 col-sm-4 col-md-2" key={skill.class}>
-                    <div
-                      className="progress-card"
-                      data-skill-id={`${skill.class}-${skillIndex}`}
-                      style={{
-                        animationDelay: `${skillIndex * 0.1}s`,
-                      }}
-                    >
-                      <div
-                        className={`circular-progress ${skill.class}`}
-                        style={{
-                          background: `conic-gradient(#2EB2D3 ${
-                            (progress[skill.class] || 0) * 3.6
-                          }deg, transparent 0deg)`,
-                        }}
-                      >
-
-                        <img
-                          src={skillImages[skill.class]}
-                          alt={skill.name}
-                          style={{
-                            position: "absolute",
-                            top: "50%",
-                            left: "50%",
-                            width: "40px",
-                            height: "40px",
-                            transform: "translate(-50%, -50%)",
-                            pointerEvents: "none",
-                            userSelect: "none",
-                          }}
-                          draggable={false}
-                        />
-                        <span className="progress-value">
-                          {progress[skill.class] || 0}%
-                        </span>
-                      </div>
-                      <br />
-                      <span className="text">{skill.name}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="skill-row">
-          {[skillCategories[1], skillCategories[3]].map((category, idx) => (
-            <div
-              key={idx}
-              className="skill-category"
-              ref={(el) => (categoryRefs.current[idx * 2 + 1] = el)}
+              data-category-index={idx}
+              ref={(el) => (categoryRefs.current[idx] = el)}
             >
               <h3 className="category-title">{category.title}</h3>
               <div className="row">
@@ -307,8 +279,8 @@ const Skills = () => {
                 ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
