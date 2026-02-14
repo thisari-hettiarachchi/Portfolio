@@ -3,6 +3,61 @@
   align-items: center;
   padding: 4rem 2rem;
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 50%, var(--gradient-1) 0%, transparent 40%),
+    radial-gradient(circle at 85% 50%, var(--gradient-2) 0%, transparent 40%),
+    radial-gradient(circle at 50% 15%, var(--gradient-3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, var(--glow-1) 0%, transparent 50%);
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.skills::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 800px 500px at 25% 40%, var(--glow-1) 0%, transparent 45%),
+    radial-gradient(ellipse 500px 800px at 75% 60%, var(--glow-2) 0%, transparent 45%),
+    radial-gradient(ellipse 650px 650px at 50% 20%, var(--glow-3) 0%, transparent 50%);
+  filter: blur(75px);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: skillsGradientShift 26s ease-in-out infinite;
+}
+
+@keyframes skillsGradientShift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translate(3%, -3%) scale(1.03) rotate(1deg);
+  }
+  40% {
+    transform: translate(-3%, 3%) scale(0.97) rotate(-1deg);
+  }
+  60% {
+    transform: translate(3%, 3%) scale(1.05) rotate(1.5deg);
+  }
+  80% {
+    transform: translate(-3%, -3%) scale(0.95) rotate(-1.5deg);
+  }
 }
 
 .skills .heading {
@@ -31,11 +86,7 @@
 .skill-category {
   flex: 1;
   min-width: 280px;
-  background: var(--bg-color);
-  border-radius: 20px;
   padding: 2rem .5rem;
-  box-shadow: var(--box-shadow);
-  backdrop-filter: blur(10px);
   border: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 1;
@@ -184,10 +235,7 @@
   }
 }
 
-.skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-}
+
 
 .skill-category:hover .category-title {
   color: #2EB2D3;
