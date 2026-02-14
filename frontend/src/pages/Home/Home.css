@@ -10,6 +10,55 @@
   background: var(--bg-color);
 }
 
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 60%);
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 1000px 800px at 15% 25%, var(--glow-1) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 1000px at 85% 75%, var(--glow-2) 0%, transparent 55%),
+    radial-gradient(ellipse 900px 900px at 50% 50%, var(--glow-3) 0%, transparent 65%);
+  filter: blur(100px);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: homeGradientFloat 25s ease-in-out infinite;
+}
+
+@keyframes homeGradientFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(8%, -5%) scale(1.08);
+  }
+  50% {
+    transform: translate(-6%, 6%) scale(0.92);
+  }
+  75% {
+    transform: translate(6%, 8%) scale(1.05);
+  }
+}
+
 #tsparticles {
   position: absolute;
   top: 0;
@@ -17,15 +66,6 @@
   width: 100%;
   height: 100%;
   z-index: 0; 
-}
-
-.home::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
 }
 
 .home .content {

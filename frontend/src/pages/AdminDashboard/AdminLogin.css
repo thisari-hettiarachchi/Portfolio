@@ -17,9 +17,49 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 20%, rgba(46, 178, 211, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(46, 178, 211, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 15% 50%, var(--gradient-1) 0%, transparent 40%),
+    radial-gradient(circle at 85% 50%, var(--gradient-2) 0%, transparent 40%),
+    radial-gradient(circle at 50% 15%, var(--gradient-3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, var(--glow-1) 0%, transparent 50%);
+  opacity: 0.8;
+  z-index: 0;
   pointer-events: none;
+}
+
+.admin-login::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 800px 500px at 25% 40%, var(--glow-1) 0%, transparent 45%),
+    radial-gradient(ellipse 500px 800px at 75% 60%, var(--glow-2) 0%, transparent 45%),
+    radial-gradient(ellipse 650px 650px at 50% 20%, var(--glow-3) 0%, transparent 50%);
+  filter: blur(80px);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: adminLoginGradientShift 23s ease-in-out infinite;
+}
+
+@keyframes adminLoginGradientShift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translate(5%, -3%) scale(1.04) rotate(1deg);
+  }
+  40% {
+    transform: translate(-3%, 5%) scale(0.96) rotate(-1deg);
+  }
+  60% {
+    transform: translate(3%, 3%) scale(1.06) rotate(1.5deg);
+  }
+  80% {
+    transform: translate(-5%, -3%) scale(0.94) rotate(-1.5deg);
+  }
 }
 
 .login-container {
