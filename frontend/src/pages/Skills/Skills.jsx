@@ -116,6 +116,7 @@ const Skills = () => {
   const skillRef = useRef(null);
   const headingRef = useRef(null);
   const categoryRefs = useRef([]);
+  const animatedCategories = useRef(new Set());
 
   useEffect(() => {
     const sectionObserver = new IntersectionObserver(
@@ -129,15 +130,6 @@ const Skills = () => {
               headingRef.current.classList.add("fade-in-up");
             }
           }, 200);
-
-          skillCategories.forEach((category, index) => {
-            setTimeout(() => {
-              animateProgress(category.skills);
-              if (categoryRefs.current[index]) {
-                categoryRefs.current[index].classList.add("slide-in-up");
-              }
-            }, 500 + index * 300);
-          });
 
           sectionObserver.disconnect();
         }
@@ -162,6 +154,29 @@ const Skills = () => {
 
     if (skillRef.current) sectionObserver.observe(skillRef.current);
 
+    const categoryObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.dataset.categoryIndex);
+            if (!animatedCategories.current.has(idx)) {
+              animatedCategories.current.add(idx);
+              animateProgress(skillCategories[idx].skills);
+              entry.target.classList.add("slide-in-up");
+            }
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    categoryRefs.current.forEach((ref, idx) => {
+      if (ref) {
+        ref.dataset.categoryIndex = idx;
+        categoryObserver.observe(ref);
+      }
+    });
+
     const skillCards = document.querySelectorAll(".progress-card");
     skillCards.forEach((card) => {
       cardObserver.observe(card);
@@ -169,6 +184,7 @@ const Skills = () => {
 
     return () => {
       sectionObserver.disconnect();
+      categoryObserver.disconnect();
       cardObserver.disconnect();
     };
   }, [isVisible, animatedCards]);
@@ -215,6 +231,7 @@ const Skills = () => {
           <div className="skill-row" key={idx}>
             <div
               className="skill-category"
+              data-category-index={idx}
               ref={(el) => (categoryRefs.current[idx] = el)}
             >
               <h3 className="category-title">{category.title}</h3>
