@@ -4,6 +4,7 @@
   margin-top: 5rem;
   background: var(--bg-color);
   position: relative;
+  overflow: hidden;
 }
 
 .admin-feedback-dashboard::before {
@@ -14,9 +15,42 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 20%, rgba(46, 178, 211, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(46, 178, 211, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 70% 20%, var(--gradient-1) 0%, transparent 45%),
+    radial-gradient(circle at 30% 80%, var(--gradient-2) 0%, transparent 45%),
+    radial-gradient(circle at 50% 40%, var(--gradient-3) 0%, transparent 55%);
+  opacity: 0.8;
+  z-index: 0;
   pointer-events: none;
+}
+
+.admin-feedback-dashboard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 700px 900px at 80% 30%, var(--glow-1) 0%, transparent 50%),
+    radial-gradient(ellipse 900px 700px at 20% 70%, var(--glow-2) 0%, transparent 50%),
+    radial-gradient(ellipse 600px 600px at 60% 60%, var(--glow-3) 0%, transparent 55%);
+  filter: blur(70px);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: adminDashboardGradientShift 29s ease-in-out infinite;
+}
+
+@keyframes adminDashboardGradientShift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(-4%, 4%) rotate(2deg) scale(1.04);
+  }
+  66% {
+    transform: translate(4%, -4%) rotate(-2deg) scale(0.96);
+  }
 }
 
 .admin-feedback-dashboard h2 {

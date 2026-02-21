@@ -493,12 +493,21 @@ const Projects = () => {
                   className="project-media"
                   onMouseEnter={() => {
                     const vid = document.getElementById(`video-${index}`);
-                    if (vid) vid.play();
+                    if (vid) {
+                      vid.play().catch(err => {
+                        // Ignore play interruption errors
+                        if (err.name !== 'AbortError') {
+                          console.error('Video play error:', err);
+                        }
+                      });
+                    }
                   }}
                   onMouseLeave={() => {
                     const vid = document.getElementById(`video-${index}`);
-                    if (vid) vid.pause();
-                    if (vid) vid.currentTime = 0;
+                    if (vid) {
+                      vid.pause();
+                      vid.currentTime = 0;
+                    }
                   }}
                 >
                   {project.video ? (

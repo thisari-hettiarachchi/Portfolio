@@ -6,7 +6,8 @@ export const getFeedbacks = async (req, res) => {
     const feedbacks = await Feedback.find({ approved: true }).sort({ createdAt: -1 });
     res.status(200).json(feedbacks);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch feedbacks" });
+    console.error("❌ Error fetching feedbacks:", error);
+    res.status(500).json({ error: "Failed to fetch feedbacks", details: error.message });
   }
 };
 
@@ -21,7 +22,8 @@ export const createFeedback = async (req, res) => {
     const savedFeedback = await feedback.save();
     res.status(201).json(savedFeedback);
   } catch (error) {
-    res.status(500).json({ error: "Failed to submit feedback" });
+    console.error("❌ Error creating feedback:", error);
+    res.status(500).json({ error: "Failed to submit feedback", details: error.message });
   }
 };
 
@@ -31,7 +33,8 @@ export const getAllFeedbacksAdmin = async (req, res) => {
     const feedbacks = await Feedback.find().sort({ createdAt: -1 });
     res.status(200).json(feedbacks);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch feedbacks" });
+    console.error("❌ Error fetching all feedbacks (admin):", error);
+    res.status(500).json({ error: "Failed to fetch feedbacks", details: error.message });
   }
 };
 
