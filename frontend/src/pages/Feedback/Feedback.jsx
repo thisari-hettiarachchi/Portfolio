@@ -24,6 +24,11 @@ const Feedback = () => {
   const fetchFeedbacks = async () => {
     try {
       const res = await fetch(`${backendURL}/api/feedbacks/get`);
+      if (!res.ok) {
+        console.error(`Failed to fetch feedbacks: ${res.status} ${res.statusText}`);
+        setFeedbacks([]);
+        return;
+      }
       const data = await res.json();
       setFeedbacks(Array.isArray(data) ? data : []);
     } catch (err) {
