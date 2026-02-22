@@ -23,6 +23,15 @@
     />
     <meta name="author" content="Thisari Hettiarachchi" />
     <meta name="robots" content="index, follow" />
+    
+    <!-- Social Profile Links -->
+    <link rel="me" href="https://www.linkedin.com/in/thisari-hettiarachchi" />
+    <link rel="me" href="https://github.com/thisari-hettiarachchi" />
+    <link rel="me" href="https://www.behance.net/thisarihettiar" />
+    <link rel="me" href="https://www.figma.com/@thettiarachchi" />
+    <link rel="me" href="https://www.facebook.com/thisari.hettiarachchi.2025" />
+    <link rel="me" href="https://www.instagram.com/_thisu_02_" />
+    <link rel="me" href="https://www.pinterest.com/msthisari/_profile/_created/" />
 
     <meta
       property="og:title"
@@ -41,8 +50,10 @@
       content="https://thisari-hettiarachchi.vercel.app"
     />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Thisari Hettiarachchi" />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@thisari_hettiarachchi" />
     <meta
       name="twitter:title"
       content="Thisari Hettiarachchi | UI/UX Designer & Full-Stack Developer"
@@ -79,24 +90,64 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Thisari Hettiarachchi",
-        "jobTitle": "UI/UX Designer & Full-Stack Developer",
-        "image": "https://thisari-hettiarachchi.vercel.app/preview.png",
-        "url": "https://thisari-hettiarachchi.vercel.app",
-        "sameAs": [
-          "https://www.facebook.com/thisari.hettiarachchi.2025",
-          "https://www.instagram.com/_thisu_02_",
-          "https://www.linkedin.com/in/thisari-hettiarachchi",
-          "https://www.pinterest.com/msthisari/_profile/_created/",
-          "https://www.behance.net/thisarihettiar",
-          "https://www.figma.com/@thettiarachchi",
-          "https://github.com/thisari-hettiarachchi"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "Sri Lanka"
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://thisari-hettiarachchi.vercel.app/#website",
+            "url": "https://thisari-hettiarachchi.vercel.app",
+            "name": "Thisari Hettiarachchi",
+            "description": "Portfolio of Thisari Hettiarachchi — UI/UX Designer and Full-Stack Developer",
+            "publisher": {
+              "@id": "https://thisari-hettiarachchi.vercel.app/#person"
+            },
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://thisari-hettiarachchi.vercel.app/#person",
+            "name": "Thisari Hettiarachchi",
+            "alternateName": "Thisari",
+            "jobTitle": "UI/UX Designer & Full-Stack Developer",
+            "description": "UI/UX Designer and Full-Stack Developer from Sri Lanka, creating modern, user-centered web and mobile applications.",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://thisari-hettiarachchi.vercel.app/preview.png"
+            },
+            "url": "https://thisari-hettiarachchi.vercel.app",
+            "sameAs": [
+              "https://www.linkedin.com/in/thisari-hettiarachchi",
+              "https://github.com/thisari-hettiarachchi",
+              "https://www.behance.net/thisarihettiar",
+              "https://www.figma.com/@thettiarachchi",
+              "https://www.facebook.com/thisari.hettiarachchi.2025",
+              "https://www.instagram.com/_thisu_02_",
+              "https://www.pinterest.com/msthisari/_profile/_created/"
+            ],
+            "knowsAbout": [
+              "UI/UX Design",
+              "Full-Stack Development",
+              "Web Development",
+              "Mobile Application Development",
+              "Frontend Development",
+              "Backend Development",
+              "JavaScript",
+              "React",
+              "Node.js"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "Sri Lanka"
+            }
+          },
+          {
+            "@type": "ProfilePage",
+            "mainEntity": {
+              "@id": "https://thisari-hettiarachchi.vercel.app/#person"
+            },
+            "url": "https://thisari-hettiarachchi.vercel.app",
+            "name": "Thisari Hettiarachchi - Professional Portfolio"
+          }
+        ]
       }
     </script>
   </head>
