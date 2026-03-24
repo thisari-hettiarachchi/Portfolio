@@ -22,6 +22,7 @@ import {
   Roy,
   RoyMP4,
   TurboTechMP4,
+  CareConnect,
 } from "../../assets/index.js";
 
 const projectData = [
@@ -95,6 +96,7 @@ const projectData = [
     title: "CareConnect – Doctor Appointment Booking Website",
     category: "Web Apps",
     image: CareConnect,
+    video: CareConnect,
     teamType: "Individual - completed",
     description:
       "A doctor appointment system that allows patients to book doctors, doctors to manage schedules, and admins to manage the platform.",
