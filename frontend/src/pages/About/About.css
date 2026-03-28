@@ -103,8 +103,8 @@
 }
 
 .about .about-container .content {
-  flex: 1 1 45rem;
-  padding: 3rem;
+  flex: 1 1 55rem;
+  padding: .5rem;
 }
 
 .about .about-container .content h2 {
