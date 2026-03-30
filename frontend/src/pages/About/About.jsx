@@ -116,12 +116,13 @@ const About = () => {
             </span>
           </p>
           <p>
-            I'm a third year Software Engineering undergraduate at CINEC
-            Campus. With a strong foundation in information and communication
-            technology, I have experience in web and mobile app development,
-            complemented by my passion for creating innovative and user-friendly
-            solutions. I'm dedicated to continuous learning and always eager to
-            take on new challenges in the tech field.
+            I am a third-year Software Engineering undergraduate at CINEC Campus with a strong foundation in Information and Communication Technology. 
+            I am passionate about designing and developing innovative, user-friendly digital solutions that solve real-world problems.
+            I have hands-on experience in both web and mobile application development, with a focus on building responsive and user-centric interfaces using modern technologies. 
+            Alongside frontend development, I am skilled in creating efficient backend systems and managing databases to deliver scalable and maintainable applications.
+            My approach combines technical expertise with a strong interest in UI/UX design, ensuring both functionality and great user experience.
+
+            I am highly motivated, continuously learning, and always eager to take on new challenges that help me grow as a developer and designer while contributing to impactful projects.
           </p>
 
           <div className="box-container">

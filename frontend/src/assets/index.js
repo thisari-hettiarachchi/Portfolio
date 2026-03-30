@@ -29,11 +29,11 @@ import Roy from "./roy.png";
 import RoyMP4 from "./roy.mp4";
 import TurboTechMP4 from "./turbotech.mp4";
 import mongodb from "./mongodb.png";
-import CareConnect from "./careconnect.mp4";
+import CareConnectMP4 from "./careconnect.mp4";
 
 export {
     mongodb,
-    CareConnect,
+    CareConnectMP4,
     TurboTechMP4,
     RoyMP4,
     Roy,
