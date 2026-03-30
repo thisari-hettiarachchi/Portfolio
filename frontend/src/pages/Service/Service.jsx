@@ -13,9 +13,9 @@ const services = [
     description: "Building responsive and user-friendly websites that look great and work smoothly.",
   },
   {
-    icon: <i className="bx bx-devices"></i>,
-    title: "Graphic Design",
-    description: "Making visually appealing designs that communicate messages clearly and creatively.",
+    icon: <i className="bx bx-mobile-alt"></i>,
+    title: "App Development",
+    description: "Developing cross-platform mobile applications with smooth functionality and seamless user experience using the latest technologies.",
   },
 ];
 
