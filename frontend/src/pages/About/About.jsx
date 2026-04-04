@@ -18,7 +18,7 @@ const About = () => {
       location: "Colombo 04",
       period: "Present",
       description:
-        "Pursuing Digital Graphic Designing course focusing on visual communication, branding, and design tools such as Photoshop and Illustrator.",
+        "Pursuing Digital Graphic Designing course focusing on visual communication, branding, and design tools such as Photoshop, InDesign and Illustrator.",
       category: "Certificate Course",
     },
     {
