@@ -174,6 +174,7 @@ const projectData = [
     toolsandlanguages: [
       "flutter",
       "firebase",
+      "supabase",
     ],
     githubLinks: [
       {
