@@ -168,7 +168,7 @@ const projectData = [
     title: "EventWallet - Event and Budet Planning Mobile Application ",
     category: "Mobile Apps",
     image: EventWalletImg,
-    teamType: "Individual - ongoing",
+    teamType: "Individual - Completed",
     description:
       "Developing a Flutter-based mobile application where users can book service providers (hotels, photographers, etc.), and service providers can view, manage bookings, and handle event-related services.",
     toolsandlanguages: [
